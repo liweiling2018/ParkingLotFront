@@ -13,7 +13,8 @@ import config from '../../static/config/index'
 Vue.use(Vuex)
 
 const state = {
-  config: config
+  config: config,
+  parkingBoyList: []
 }
 
 export default new Vuex.Store({

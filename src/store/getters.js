@@ -7,5 +7,8 @@ export default {
         } else {
             return state.config.prod
         }
+    },
+    getParkingBoyList (state) {
+        return state.parkingBoyList
     }
 }

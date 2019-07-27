@@ -50,8 +50,6 @@ export default {
     }
   },
   mounted() {
-    console.log(process.env.type)
-    console.log(this.$store.getters.getConfig)
   }
 }
 </script>
