@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    console.log(process.env.NODE_ENV)
+    console.log(process.env.type)
     console.log(this.$store.getters.getConfig)
   }
 }
