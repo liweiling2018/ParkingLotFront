@@ -48,6 +48,9 @@ export default {
     selectSliderMenu (name) {
       this.currentSliderItemIndex = parseInt(name) - 1
     }
+  },
+  mounted () {
+    console.log(process.env.NODE_ENV)
   }    
 }
 </script>
