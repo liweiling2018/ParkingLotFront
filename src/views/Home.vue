@@ -47,11 +47,12 @@ export default {
   methods: {
     selectSliderMenu (name) {
       this.currentSliderItemIndex = parseInt(name) - 1
-    },
-    mounted() {
-      console.log(this.$store.getters.getConfig)
-    },
-  }   
+    }
+  },
+  mounted() {
+    console.log(process.env.NODE_ENV)
+    console.log(this.$store.getters.getConfig)
+  }
 }
 </script>
 
