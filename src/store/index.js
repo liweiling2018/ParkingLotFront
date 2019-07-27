@@ -13,7 +13,7 @@ import config from '../../static/config/index'
 Vue.use(Vuex)
 
 const state = {
-  config: process.env.NODE_ENV === 'production' ? config.prod : config.dev
+  config: process.env.NODE_ENV === 'production' ? config.prod : config.stage
 }
 
 export default new Vuex.Store({
