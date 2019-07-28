@@ -1,6 +1,6 @@
 <template>
 
-<Form ref="formValidate" :model="formValidate" :rules="ruleInline" :label-width="80">
+<Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
     <FormItem label="Name" prop="name">
         <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
     </FormItem>
@@ -34,7 +34,7 @@ export default {
                 name: [
                     { required: true, message: 'The name cannot be empty', trigger: 'blur' }
                 ],
-                gender: [
+                sex: [
                     { required: true, message: 'Please enter gender', trigger: 'change' }
                 ],
                 age: [
