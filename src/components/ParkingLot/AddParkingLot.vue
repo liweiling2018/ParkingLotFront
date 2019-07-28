@@ -4,10 +4,10 @@
         <Button type="primary" @click="filter">有空位</Button>
         <Modal
         v-model="adding"
-        title="添加一个停车场"
-        @on-ok="ok"
+        title="add parking lot"
+        @on-ok="handleSubmit(addParkingLotForm)"
         @on-cancel="cancel">
-             <AddParkingLotForm></AddParkingLotForm>
+             <AddParkingLotForm ref="addParkingLotForm"></AddParkingLotForm>
         </Modal>
     </div>
 </template>
@@ -24,8 +24,14 @@ export default {
         add () {
             this.adding = true
         },
-        ok () {
-            this.$Message.info('Clicked ok');
+        handleSubmit (name) {
+            this.$refs[name]['formValidate'].validate((valid) => {
+                if (valid) {
+                    this.$Message.success('Success!');
+                } else {
+                    this.$Message.error('Fail!');
+                }
+            })
         },
         cancel () {
             this.$Message.info('Clicked cancel');

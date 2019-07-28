@@ -15,7 +15,7 @@ export default {
         return {
             formValidate: {
                 name: '',
-                capacity: Number
+                capacity: ''
             },
             ruleValidate: {
                 name: [
