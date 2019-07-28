@@ -90,6 +90,7 @@ export default {
     okFreeze () {
       let vm = this
       deleteParkingBoy(this, this.currentParkingBoy, function (data) {
+        vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
         vm.$Message.info('冻结成功')
       }, function (err) {
 
