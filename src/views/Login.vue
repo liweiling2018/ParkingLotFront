@@ -19,6 +19,7 @@
 </template>
 <script>
 import md5 from 'js-md5';
+import {user_login} from "../assets/api/login.js"
     export default {
         data () {
             return {
@@ -38,21 +39,17 @@ import md5 from 'js-md5';
                 }
             }
         },
-        methods: {
-            
+        methods: {            
             handleSubmit(name) {
+                let vm=this;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$Message.success('Success!');
-                        this.$router.push('/');
-                        // axios.get('http://localhost:8080/user?uername='+this.formInline.username+'password='+md5(this.formInline.password))
-                        //     .then(function (response) {
-                        //         this.$router.push('/');
-
-                        //     })
-                        //     .catch(function (error) {
-                        //         this.$Message.error('用户编号或密码错误');
-                        //     });
+                        let user=this.formInline
+                        addParkingBoy(vm, user, function(data){
+                           this.$router.push('/');
+                        },function(data){
+                             this.$Message.error('登录失败，用户名或密码错误');
+                        })
                     } else {
                         this.$Message.error('Fail!');
                     }

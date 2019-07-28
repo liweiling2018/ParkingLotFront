@@ -9,31 +9,31 @@ export default {
         }
     },
     getParkingBoyList (state) {
-        if (process.env.NODE_ENV === 'development') {
-            return [{
-              id: '0',
-              name: '张三',
-              phone: 13416366089,
-              state: 0,
-              age: 20,
-              gender: 'male',
-              parkingLotList: [
-                { name: 'lot1'}
-              ]
-            },
-            {
-                id: '1',
-                name: '张四',
-                phone: 13416366089,
-                age: 20,
-                gender: 'male',
-                state: 0,
-                parkingLotList: [
-                  { name: 'lot1'}
-                ]
-              }
-            ]
-          }
+      // if (process.env.NODE_ENV === 'development') {
+      //   return [{
+      //     id: '0',
+      //     name: '张三',
+      //     phone: 13416366089,
+      //     state: 0,
+      //     age: 20,
+      //     gender: 'male',
+      //     parkingLotList: [
+      //       { name: 'lot1'}
+      //     ]
+      //   },
+      //   {
+      //       id: '1',
+      //       name: '张四',
+      //       phone: 13416366089,
+      //       age: 20,
+      //       gender: 'male',
+      //       state: 0,
+      //       parkingLotList: [
+      //         { name: 'lot1'}
+      //       ]
+      //     }
+      //   ]
+      // }
         return state.parkingBoyList
     },
     getParkingLotList (state) {
