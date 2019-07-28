@@ -109,6 +109,9 @@ export default {
     changeFilter (state) {
       this.filter = state
     }
+  },
+  mounted () {
+    this.pageChange(1)
   }
 }
 </script>
