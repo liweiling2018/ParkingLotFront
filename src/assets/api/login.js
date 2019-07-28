@@ -6,8 +6,8 @@ const user_login = (vm, user, callback, failback, errback) => {
         method: 'post',
         url: ip + '/user/login',
         data: {
-          username: username,
-          password: password
+          username: user.username,
+          password: user.password
         }
       })
       .then(function (response) {
