@@ -56,6 +56,7 @@ export default {
   },
   mounted () {
     // let vm = this
+    // console.log(localStorage.getItem('user'))
     // if (localStorage.getItem('user') == null) {
     //   vm.$router.push('/login')
     // } else {
