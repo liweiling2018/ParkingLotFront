@@ -108,6 +108,9 @@ export default {
       }, function (err) {
       })
     }
+  },
+  mounted () {
+    this.pageChange(1)
   }
 }
 </script>

@@ -1,9 +1,9 @@
 export default {
     addParkingBoy (state, payload) {
-        state.parkingBoy.push(payload)
+        state.parkingBoyList.push(payload)
     },
     setParkingBoy (state, payload) {
-        state.parkingBoy - payload
+        state.parkingBoyList = payload
     },
     addParkingLot (state, payload) {
         state.parkingLotList.push(payload)
