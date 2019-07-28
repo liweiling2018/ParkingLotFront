@@ -11,7 +11,7 @@
         <Input v-model="formValidate.phone" placeholder="Enter your age"></Input>
     </FormItem>
     <FormItem label="Sex" prop="sex">
-        <RadioGroup v-model="formValidate.gender">
+        <RadioGroup v-model="formValidate.sex">
             <Radio label="male">Male</Radio>
             <Radio label="female">Female</Radio>
         </RadioGroup>
