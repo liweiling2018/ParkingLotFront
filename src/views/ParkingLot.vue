@@ -105,6 +105,7 @@ export default {
     },
     changeFilter (state) {
       this.filter = state
+      console.log("test")
       this.pageChange(1)
     }
   },
