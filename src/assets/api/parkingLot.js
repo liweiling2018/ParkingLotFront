@@ -1,31 +1,88 @@
 const axios = require('axios')
-const moment = require('moment')
 
-const ip = 'http://127.0.0.1:9090'
-const getAllParkingLots = (callback, errback) => {
-  axios.get(ip + '/parkingLots')
+const addParkingLot = (vm, lot, callback, errback) => {
+    let ip = vm.$store.getters.getConfig.server
+    axios({
+        method: 'post',
+        url: ip + '/parkinglots',
+        data: {
+          name: lot.name,
+          capacity: lot.capacity,
+          remine: lot.remine
+        }
+      })
+      .then(function (response) {
+        callback(response.data)
+      })
+      .catch(function (error) {
+        errback(error)
+      })
+}
+
+const updateParkingLot = (vm, lot, callback, errback) => {
+    let ip = vm.$store.getters.getConfig.server
+    axios({
+        method: 'post',
+        url: ip + '/parkinglots/' + lot.id,
+        data: {
+          id: lot.id,
+          name: lot.name,
+          capacity: lot.capacity,
+          remine: lot.remine
+        }
+      })
+      .then(function (response) {
+        callback(response.data)
+      })
+      .catch(function (error) {
+        errback(error)
+      })
+}
+
+const deleteParkingLot = (vm, lot, callback, errback) => {
+    let ip = vm.$store.getters.getConfig.server
+    axios({
+        method: 'delete',
+        url: ip + '/parkinglots/' + lot.id,
+      })
+      .then(function (response) {
+        callback(response.data)
+      })
+      .catch(function (error) {
+        errback(error)
+      })
+}
+
+const getParkingLotByPage = (vm, page, callback, errback) => {
+    let ip = vm.$store.getters.getConfig.server
+    let pageSize = 10
+    axios.get(ip + '/parkinglot?page=' + page + "&pageSize=" + pageSize)
     .then(function (response) {
-      callback(response.data)
+        callback(response.data)
     })
     .catch(function (error) {
-      errback(error)
+        errback(error)
     })
 }
 
-const getValidPositionParkingLots = (callback, errback) => {
-  axios.get(ip + '/parkingLots')
-    .then(function (response) {
+const getValidParkingLotByPage = (vm, page, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+  let pageSize = 10
+  axios.get(ip + '/parkinglots?page=' + page + "&pageSize=" + pageSize)
+  .then(function (response) {
       callback(response.data)
-    })
-    .catch(function (error) {
+  })
+  .catch(function (error) {
       errback(error)
-    })
+  })
 }
 
-export default {
-  getAllPackage,
-  getPackageByState,
-  updatePackageFecthed,
-  addPackage,
-  updatePackageFetchedTime
+
+
+module.exports = {
+    addParkingLot,
+    getParkingLotByPage,
+    updateParkingLot,
+    deleteParkingLot,
+    getValidParkingLotByPage
 }
