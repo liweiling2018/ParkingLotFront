@@ -52,7 +52,7 @@ export default {
         },
         {
           title: '状态',
-          key: 'status'
+          key: 'state'
         },
         {
           title: '操作',
@@ -91,7 +91,6 @@ export default {
       let vm = this
       deleteParkingBoy(this, this.currentParkingBoy, function (data) {
         vm.$Message.info('冻结成功')
-        vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
       }, function (err) {
 
       })
@@ -107,12 +106,8 @@ export default {
       getParkingBoyByPage(this, page, function (data) {
         vm.$store.commit('setParkingBoy', data)
       }, function (err) {
-        console.log(err)
       })
     }
-  },
-  mounted () {
-    this.pageChange(1)
   }
 }
 </script>

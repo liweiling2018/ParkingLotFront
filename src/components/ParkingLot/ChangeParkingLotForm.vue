@@ -11,7 +11,7 @@
 <script>
 import { updateParkingLot } from '../../assets/api/parkingLot'
 export default {
-    name: 'addParkingBoyForm',
+    name: 'changeParkingLotForm',
     data () {
         return {
             ruleValidate: {

@@ -63,13 +63,11 @@ export default {
       return this.$store.getters.getParkingLotList
     }
   },
-  components: {
-    AddParkingLot
-  },
   methods: {
     change (row) {
+      this.currentParkingLot = row
         this.changing = true
-        this.currentParkingLot = row
+        
     },
     freeze (row) {
         this.freezing = true
@@ -82,8 +80,6 @@ export default {
       let vm = this
       deleteParkingLot(this, this.currentParkingLot, function (data) {
         vm.$Message.info('冻结成功')
-      }, function (err) {
-
       })
     },
     cancelFreeze () {
