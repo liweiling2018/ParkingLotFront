@@ -14,7 +14,8 @@ Vue.use(Vuex)
 
 const state = {
   config: config,
-  parkingBoyList: []
+  parkingBoyList: [],
+  parkingLotList: []
 }
 
 export default new Vuex.Store({

@@ -14,10 +14,10 @@
         </Row>
         <Modal
         v-model="adding"
-        :title='formTitle'
+        title="Common Modal dialog box title"
         @on-ok="ok"
         @on-cancel="cancel">
-        <AddParkingBoyForm ></AddParkingBoyForm>
+        <AddParkingBoyForm></AddParkingBoyForm>
         </Modal>
     </div>
 </template>
@@ -35,14 +35,12 @@ export default {
                 {label: '电话号码', index: 2, value: 'phone'},
                 {label: '状态', index: 3, value: 'state'}
             ],
-            adding: false,
-            formTitle: ''
+            adding: false
         }
     },
     methods: {
         add () {
             this.adding = true
-            this.formTitle = '添加新员工'
         },
         ok () {
             this.$Message.info('Clicked ok');
