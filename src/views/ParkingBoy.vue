@@ -2,12 +2,18 @@
   <div>
     <AddParkingBoy class="add-parking-boy"></AddParkingBoy>
     <Table :columns="columns" :data="getParkingBoyList">
-      <template slot-scope="{ row, index }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="change(index)">修改</Button>
-        <Button type="error" size="small" @click="freeze(index)">冻结</Button>
+      <template slot-scope="{ row }" slot="action">
+        <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
+        <Button type="error" size="small" @click="freeze(row)">冻结</Button>
       </template>
     </Table>
     <Page class="page-div" :total="100" />
+    <Modal v-model="changing" title="修改停车员信息" @on-ok="okChange" @on-cancel="cancelChange">
+      <ChangeParkingBoyForm v-if="changing" :formValidate='currentParkingBoy'></ChangeParkingBoyForm>
+    </Modal>
+    <Modal v-model="freezing" title="冻结停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
+      是否确认冻结停车员：{{currentParkingBoy.name}}
+    </Modal>
   </div>
 </template>
 
@@ -15,6 +21,7 @@
 <script>
 import TableExpand from '@/components/ParkingBoy/TableExpand'
 import AddParkingBoy from '@/components/ParkingBoy/AddParkingBoy'
+import ChangeParkingBoyForm from '@/components/ParkingBoy/ChangeParkingBoyForm'
 export default {
   data () {
     return {
@@ -51,7 +58,10 @@ export default {
           key: 'action',
           slot: 'action'
         }
-      ]
+      ],
+      changing: false,
+      freezing: false,
+      currentParkingBoy: {}
     }
   },
   computed: {
@@ -61,13 +71,28 @@ export default {
   },
   components: {
     AddParkingBoy,
-    TableExpand
+    TableExpand,
+    ChangeParkingBoyForm
   },
   methods: {
-    change () {
+    change (row) {
+      this.changing = true
+      this.currentParkingBoy = row
+    },
+    freeze (row) {
+      this.freezing = true
+      this.currentParkingBoy = row
+    },
+    okChange () {
 
     },
-    freeze () {
+    okFreeze () {
+
+    },
+    cancelFreeze () {
+
+    },
+    cancelChange () {
 
     }
   }

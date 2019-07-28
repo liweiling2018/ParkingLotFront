@@ -15,6 +15,8 @@ export default {
         name: '张三',
         phone: '13416366089',
         state: 0,
+        gender: 0,
+        age: 20,
         parkingLotList: [
           { name: 'lot1'}
         ]
@@ -24,6 +26,8 @@ export default {
         name: '张四',
         phone: '13416366089',
         state: 0,
+        gender: 0,
+        age: 20,
         parkingLotList: [
           { name: 'lot1'}
         ]

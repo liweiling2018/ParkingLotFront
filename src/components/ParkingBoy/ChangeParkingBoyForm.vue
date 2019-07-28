@@ -23,12 +23,12 @@ export default {
     name: 'addParkingBoyForm',
     data () {
         return {
-            formValidate: {
-                name: '',
-                gender: '',
-                age: '',
-                phone: ''
-            },
+            // formValidate: {
+            //     name: '',
+            //     gender: '',
+            //     age: '',
+            //     phone: ''
+            // },
             ruleValidate: {
                 name: [
                     { required: true, message: 'The name cannot be empty', trigger: 'blur' }
@@ -47,6 +47,12 @@ export default {
     },
     methods: {
         
+    },
+    props: {
+        formValidate: {}
+    },
+    mounted() {
+        console.log(this.formValidate)
     }
 }
 </script>
