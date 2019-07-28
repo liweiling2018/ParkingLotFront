@@ -6,7 +6,7 @@ const user_login = (vm, user, callback, failback, errback) => {
         method: 'post',
         url: ip + '/user/login',
         data: {
-          user_name: user.username,
+          userName: user.username,
           password: user.password
         }
       })
