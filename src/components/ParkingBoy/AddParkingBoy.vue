@@ -3,14 +3,16 @@
         <Row>
             <Col span="9"><Button @click="add" type="primary">新建</Button></Col>
             <Col span="6">
-                <Select v-model="filter" style="width:90%">
+                <!-- <Select v-model="filter" style="width:90%">
                     <Option v-for="(item, index) in selectItemList" :key="index" :value="item.value">{{ item.label }}</Option>
-                </Select>
+                </Select> -->
             </Col>
             <Col span="6">
-                <Input style="width:90%" v-model="filterKeyWord" placeholder="请输入筛选关键字"  />
+                <!-- <Input style="width:90%" v-model="filterKeyWord" placeholder="请输入筛选关键字"  /> -->
             </Col>
-            <Col span="3"><Button type="primary">搜索</Button></Col>
+            <Col span="3">
+            <!-- <Button type="primary">搜索</Button> -->
+            </Col>
         </Row>
         <Modal
         v-model="adding"
