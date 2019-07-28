@@ -44,6 +44,7 @@ import user_login from "../assets/api/login.js"
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         let user=this.formInline
+                        console.log(user);
                         user_login(vm, user, function(data){
                            vm.$router.push('/');
                         }, function (fail) {
