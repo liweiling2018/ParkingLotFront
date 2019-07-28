@@ -2,7 +2,6 @@ const axios = require('axios')
 import md5 from 'js-md5';
 const user_login = (vm, user, callback, failback, errback) => {
     let ip = vm.$store.getters.getConfig.server
-    console.log(user)
     axios({
         method: 'post',
         url: ip + '/user/login',

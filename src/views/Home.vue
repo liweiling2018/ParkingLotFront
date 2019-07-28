@@ -55,20 +55,21 @@ export default {
     }
   },
   mounted () {
-    // let vm = this
-    // console.log(localStorage.getItem('user'))
-    // if (localStorage.getItem('user') == null) {
-    //   vm.$router.push('/login')
-    // } else {
-    //   console.log(localStorage.getItem('user'))
-    //   login(this, localStorage.getItem('user'), function (data) {
-    //     vm.$router.push('/')
-    //   }, function(fail) {
-    //     vm.$router.push('/login')
-    //   }, function(err) {
-    //     vm.$router.push('/login')
-    //   })
-    // }
+    let vm = this
+    console.log(localStorage.getItem('username'))
+    if (localStorage.getItem('user') == null) {
+      vm.$router.push('/login')
+    } else {
+      let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
+      login(this, user, function (data) {
+        vm.$router.push('/')
+        vm.$store.commit('setUser', user)
+      }, function(fail) {
+        vm.$router.push('/login')
+      }, function(err) {
+        vm.$router.push('/login')
+      })
+    }
   }
 }
 </script>
