@@ -9,7 +9,7 @@ const addParkingBoy = (vm, boy, callback, errback) => {
           name: boy.name,
           phone: boy.phone,
           age: boy.age,
-          sex: boy.gender,
+          sex: boy.sex,
           status: '',
           tag: '',
           parkingLots: []
@@ -42,7 +42,9 @@ const updateParkingBoy = (vm, boy, callback, errback) => {
         }
       })
       .then(function (response) {
-        callback(response.data)
+        if (response.status == 200) {
+          callback(response.data)
+        }
       })
       .catch(function (error) {
         errback(error)

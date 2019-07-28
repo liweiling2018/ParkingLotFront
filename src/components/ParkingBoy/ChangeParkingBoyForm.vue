@@ -1,6 +1,6 @@
 <template>
 
-<Form ref="formValidate" :model="formValidate"  :label-width="80">
+<Form ref="formValidate" :model="formValidate" :rules="ruleInline" :label-width="80">
     <FormItem label="Name" prop="name">
         <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
     </FormItem>
@@ -10,7 +10,7 @@
     <FormItem label="Phone" prop="phone">
         <Input v-model="formValidate.phone" placeholder="Enter your age" number></Input>
     </FormItem>
-    <FormItem label="Gender" prop="gender">
+    <FormItem label="Sex" prop="sex">
         <RadioGroup v-model="formValidate.gender">
             <Radio label="male">Male</Radio>
             <Radio label="female">Female</Radio>
@@ -34,14 +34,14 @@ export default {
                 name: [
                     { required: true, message: 'The name cannot be empty', trigger: 'blur' }
                 ],
-                gender: [
-                    { required: true, message: 'Please select gender', trigger: 'change' }
+                sex: [
+                    { required: true, message: 'Please enter sex', trigger: 'blur' }
                 ],
                 age: [
-                    { required: true, message: 'Please select age', trigger: 'change' }
+                    { required: true, message: 'Please enter age', trigger: 'blur' }
                 ],
                 phone: [
-                    { required: true, message: 'Please select phone number', trigger: 'change' }
+                    { required: true, message: 'Please select phone number', trigger: 'blur' }
                 ]
             }
         }
@@ -56,9 +56,8 @@ export default {
         let vm = this
         this.$root.$on('changeParkingBoy', function () {
             updateParkingBoy(vm, vm.formValidate, function (data) {
-
+                vm.$Message.success('修改成功')
             }, function (err) {
-
             })
         })
         
