@@ -32,7 +32,6 @@ export default {
     },
     mounted() {
         let vm = this
-        console.log("hfhdkfh")
         this.$root.$on('changeParkingLot', function () {
             updateParkingLot(vm, vm.formValidate, function (data) {
             }, function (err) {
