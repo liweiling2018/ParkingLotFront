@@ -11,7 +11,7 @@
 <script>
 import { updateParkingLot } from '../../assets/api/parkingLot'
 export default {
-    name: 'addParkingBoyForm',
+    name: 'changeParkingLotForm',
     data () {
         return {
             ruleValidate: {
@@ -32,6 +32,7 @@ export default {
     },
     mounted() {
         let vm = this
+        console.log("hfhdkfh")
         this.$root.$on('changeParkingLot', function () {
             updateParkingLot(vm, vm.formValidate, function (data) {
             }, function (err) {
