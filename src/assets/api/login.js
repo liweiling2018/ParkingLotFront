@@ -1,12 +1,12 @@
 const axios = require('axios')
-const user_login = (vm, user, callback, errback) => {
+const user_login = (vm, username,password, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
         method: 'post',
         url: ip + '/user/login',
         data: {
-          username: user.username,
-          password: md5(user.password)
+          username: username,
+          password: password
         }
       })
       .then(function (response) {

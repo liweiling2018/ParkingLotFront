@@ -45,7 +45,7 @@ import {user_login} from "../assets/api/login.js"
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         let user=this.formInline
-                        addParkingBoy(vm, user, function(data){
+                        addParkingBoy(vm, user.username,md5(user.password), function(data){
                            this.$router.push('/');
                         },function(data){
                              this.$Message.error('登录失败，用户名或密码错误');
