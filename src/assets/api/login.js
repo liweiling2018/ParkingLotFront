@@ -12,6 +12,7 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .then(function (response) {
         if (response.status == 200) {
+          console.log(user)
           localStorage.setItem('user', user)
           vm.$store.commit('setUser', user)
           callback(response.data)

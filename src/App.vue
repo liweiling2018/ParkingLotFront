@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import login from '../src/assets/api/login'
+
 export default {
   name: 'App',
   
