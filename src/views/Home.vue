@@ -8,7 +8,7 @@
             <span class="home-logo-title">滴滴停车</span>
           </div> -->
           <div class="layout-nav">
-            <span class="home-user-name">{{$store.getters.getUser.name}}</span>
+            <span class="home-user-name">{{$store.getters.getUser.username}}</span>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}
