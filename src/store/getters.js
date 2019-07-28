@@ -55,9 +55,6 @@ export default {
       return state.parkingLotList
   },
   getUser (state) {
-    if (process.env.NODE_ENV === 'development') {
-      return {username: 'Tom', password: '123456'}
-    }
     return state.user
   }
 }

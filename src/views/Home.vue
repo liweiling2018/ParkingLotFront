@@ -36,6 +36,7 @@
 <script>
 import ParkingLot from '@/views/ParkingLot'
 import ParkingBoy from '@/views/ParkingBoy'
+import login from '../assets/api/login'
 export default {
   data () {
     return {
@@ -55,11 +56,14 @@ export default {
   },
   mounted () {
     let vm = this
+    console.log(localStorage.getItem('username'))
     if (localStorage.getItem('user') == null) {
       vm.$router.push('/login')
     } else {
-      login(this, localStorage.getItem('user'), function (data) {
+      let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
+      login(this, user, function (data) {
         vm.$router.push('/')
+        vm.$store.commit('setUser', user)
       }, function(fail) {
         vm.$router.push('/login')
       }, function(err) {
