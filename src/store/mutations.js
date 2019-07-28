@@ -7,5 +7,8 @@ export default {
     },
     addParkingLot (state, payload) {
         state.parkingLotList.push(payload)
+    },
+    setUser (state, payload) {
+        state.user = payload
     }
 }

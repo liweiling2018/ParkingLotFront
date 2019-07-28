@@ -54,4 +54,10 @@ export default {
         }
       return state.parkingLotList
   },
+  getUser (state) {
+    if (process.env.NODE_ENV === 'development') {
+      return {name: 'Tom', pass: '123456'}
+    }
+    return state.user
+  }
 }
