@@ -1,6 +1,6 @@
 <template>
 
-<Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+<Form ref="formValidate" :model="formValidate"  :label-width="80">
     <FormItem label="Name" prop="name">
         <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
     </FormItem>

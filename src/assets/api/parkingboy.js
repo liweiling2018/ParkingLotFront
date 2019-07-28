@@ -10,13 +10,15 @@ const addParkingBoy = (vm, boy, callback, errback) => {
           phone: boy.phone,
           age: boy.age,
           sex: boy.gender,
-          status: 'busy',
-          tag: 'VIP',
+          status: '',
+          tag: '',
           parkingLots: []
         }
       })
       .then(function (response) {
-        callback(response.data)
+        if (response.status == 201) {
+          callback(response.data)
+        }
       })
       .catch(function (error) {
         errback(error)
@@ -26,15 +28,15 @@ const addParkingBoy = (vm, boy, callback, errback) => {
 const updateParkingBoy = (vm, boy, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
-        method: 'post',
+        method: 'patch',
         url: ip + '/parkingboy/' + boy.id,
         data: {
           id: boy.id,
           name: boy.name,
           phone: boy.phone,
           age: boy.age,
-          sex: boy.gender,
-          status: boy.stauts,
+          sex: boy.sex,
+          status: boy.status,
           tag: boy.tag,
           parkingLots: boy.parkingLots
         }
@@ -54,7 +56,9 @@ const deleteParkingBoy = (vm, boy, callback, errback) => {
         url: ip + '/parkingboy/' + boy.id,
       })
       .then(function (response) {
-        callback(response.data)
+        if (response.status == 200) {
+          callback(response.data)
+        }
       })
       .catch(function (error) {
         errback(error)

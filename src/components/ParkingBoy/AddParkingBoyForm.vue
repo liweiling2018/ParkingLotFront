@@ -1,14 +1,14 @@
 <template>
 
-<Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+<Form ref="formValidate" :model="formValidate"  :label-width="80">
     <FormItem label="Name" prop="name">
         <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
     </FormItem>
     <FormItem label="Age" prop="age">
-        <Input v-model="formValidate.age" placeholder="Enter your age" number></Input>
+        <Input v-model="formValidate.age" placeholder="Enter your age"></Input>
     </FormItem>
     <FormItem label="Phone" prop="phone">
-        <Input v-model="formValidate.phone" placeholder="Enter your age" number></Input>
+        <Input v-model="formValidate.phone" placeholder="Enter your age"></Input>
     </FormItem>
     <FormItem label="Gender" prop="gender">
         <RadioGroup v-model="formValidate.gender">
@@ -27,8 +27,8 @@ export default {
             formValidate: {
                 name: '',
                 gender: '',
-                age: 0,
-                phone: 0
+                age: '0',
+                phone: '0'
             },
             ruleValidate: {
                 name: [
@@ -53,7 +53,9 @@ export default {
         let vm = this
         this.$root.$on('addParkingBoy', function () {
             addParkingBoy(vm, vm.formValidate, function (data) {
-
+                if (vm.$store.getters.getParkingBoyList.length < 10) {
+                    vm.$store.commit('addParkingBoy', data)
+                }
             }, function (err) {
                 console.log(err)
             })
