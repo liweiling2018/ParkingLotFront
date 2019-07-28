@@ -45,10 +45,9 @@ export default {
             this.formTitle = '添加新员工'
         },
         ok () {
-            this.$Message.info('Clicked ok');
+            this.$root.$emit('addParkingBoy')
         },
         cancel () {
-            this.$Message.info('Clicked cancel');
         }
     },
     components: {

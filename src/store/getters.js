@@ -13,8 +13,10 @@ export default {
             return [{
               id: '0',
               name: '张三',
-              phone: '13416366089',
+              phone: 13416366089,
               state: 0,
+              age: 20,
+              gender: 'male',
               parkingLotList: [
                 { name: 'lot1'}
               ]
@@ -22,7 +24,9 @@ export default {
             {
                 id: '1',
                 name: '张四',
-                phone: '13416366089',
+                phone: 13416366089,
+                age: 20,
+                gender: 'male',
                 state: 0,
                 parkingLotList: [
                   { name: 'lot1'}
@@ -50,4 +54,10 @@ export default {
         }
       return state.parkingLotList
   },
+  getUser (state) {
+    if (process.env.NODE_ENV === 'development') {
+      return {name: 'Tom', pass: '123456'}
+    }
+    return state.user
+  }
 }

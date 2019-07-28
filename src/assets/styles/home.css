@@ -9,12 +9,16 @@
 .layout-logo{
     width: 100px;
     height: 30px;
-    background: #5b6270;
+    /* background: #5b6270; */
     border-radius: 3px;
     float: left;
     position: relative;
     top: 15px;
     left: 20px;
+    line-height: 30px;
+    color: antiquewhite;
+    display: table-cell;
+    vertical-align: middle;
 }
 .layout-nav{
     width: 420px;
@@ -31,3 +35,16 @@
     margin: 24px 0 0 0;
 }
 
+.home-user-name {
+    color: aqua;
+    float: right;
+}
+
+.home-logo {
+    width: 30px;
+}
+
+.home-logo-title {
+    height: 30px;
+    line-height: 30px;
+}
