@@ -19,6 +19,7 @@
 </Form>
 </template>
 <script>
+import { updateParkingBoy } from '../../assets/api/parkingboy'
 export default {
     name: 'addParkingBoyForm',
     data () {
@@ -52,7 +53,15 @@ export default {
         formValidate: {}
     },
     mounted() {
-        console.log(this.formValidate)
+        let vm = this
+        this.$root.$on('changeParkingBoy', function () {
+            updateParkingBoy(vm, vm.formValidate, function (data) {
+
+            }, function (err) {
+
+            })
+        })
+        
     }
 }
 </script>

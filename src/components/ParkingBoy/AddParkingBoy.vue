@@ -43,10 +43,9 @@ export default {
             this.adding = true
         },
         ok () {
-            this.$Message.info('Clicked ok');
+            this.$root.$emit('addParkingBoy')
         },
         cancel () {
-            this.$Message.info('Clicked cancel');
         }
     },
     components: {

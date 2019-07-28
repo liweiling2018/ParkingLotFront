@@ -19,6 +19,7 @@
 </Form>
 </template>
 <script>
+import {addParkingBoy} from '../../assets/api/parkingboy'
 export default {
     name: 'addParkingBoyForm',
     data () {
@@ -26,8 +27,8 @@ export default {
             formValidate: {
                 name: '',
                 gender: '',
-                age: '',
-                phone: ''
+                age: 0,
+                phone: 0
             },
             ruleValidate: {
                 name: [
@@ -47,6 +48,16 @@ export default {
     },
     methods: {
         
+    },
+    mounted() {
+        let vm = this
+        this.$root.$on('addParkingBoy', function () {
+            addParkingBoy(vm, vm.formValidate, function (data) {
+
+            }, function (err) {
+                console.log(err)
+            })
+        })
     }
 }
 </script>
