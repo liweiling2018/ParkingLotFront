@@ -31,5 +31,23 @@ export default {
             ]
           }
         return state.parkingBoyList
-    }
+    },
+    getParkingLotList (state) {
+      if (process.env.NODE_ENV === 'development') {
+          return [{
+            id: '0',
+            name: '停车场A',
+            capacity: 10,
+            remine: 5
+          },
+          {
+              id: '1',
+              name: '停车场B',
+              capacity: 8,
+              remine: 2
+            }
+          ]
+        }
+      return state.parkingLotList
+  },
 }
