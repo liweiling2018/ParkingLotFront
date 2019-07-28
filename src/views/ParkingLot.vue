@@ -80,6 +80,7 @@ export default {
       let vm = this
       deleteParkingLot(this, this.currentParkingLot, function (data) {
         vm.$Message.info('冻结成功')
+        window.location.reload()
       })
     },
     cancelFreeze () {
@@ -104,6 +105,7 @@ export default {
     },
     changeFilter (state) {
       this.filter = state
+      this.pageChange(1)
     }
   },
   mounted () {
