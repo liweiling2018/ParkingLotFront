@@ -47,7 +47,9 @@ import {user_login} from "../assets/api/login.js"
                         let user=this.formInline
                         addParkingBoy(vm, user, function(data){
                            this.$router.push('/');
-                        },function(data){
+                        }, function (fail) {
+                            this.$router.push('/login');
+                        }, function(data){
                              this.$Message.error('登录失败，用户名或密码错误');
                         })
                     } else {

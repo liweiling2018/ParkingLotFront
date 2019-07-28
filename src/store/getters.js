@@ -56,7 +56,7 @@ export default {
   },
   getUser (state) {
     if (process.env.NODE_ENV === 'development') {
-      return {name: 'Tom', pass: '123456'}
+      return {username: 'Tom', password: '123456'}
     }
     return state.user
   }
