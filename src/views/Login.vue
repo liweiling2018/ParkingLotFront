@@ -18,8 +18,7 @@
 </div>
 </template>
 <script>
-import md5 from 'js-md5';
-import {user_login} from "../assets/api/login.js"
+import user_login from "../assets/api/login.js"
     export default {
         data () {
             return {
@@ -45,15 +44,15 @@ import {user_login} from "../assets/api/login.js"
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         let user=this.formInline
-                        addParkingBoy(vm, user, function(data){
-                           this.$router.push('/');
+                        user_login(vm, user, function(data){
+                           vm.$router.push('/');
                         }, function (fail) {
-                            this.$router.push('/login');
+                            vm.$Message.error('登录失败，用户名或密码错误');
                         }, function(data){
-                             this.$Message.error('登录失败，用户名或密码错误');
+                             vm.$Message.error('登录失败，用户名或密码错误');
                         })
                     } else {
-                        this.$Message.error('Fail!');
+                        vm.$Message.error('Fail!');
                     }
                 })
             }

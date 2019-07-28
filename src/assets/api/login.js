@@ -1,4 +1,5 @@
 const axios = require('axios')
+import md5 from 'js-md5';
 const user_login = (vm, user, callback, failback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
@@ -14,7 +15,7 @@ const user_login = (vm, user, callback, failback, errback) => {
           localStorage.setItem('user', user)
           vm.$store.commit('setUser', user)
           callback(response.data)
-        } else if (response.status == 404) {
+        } else {
           failback(response.data)
         }
       })
