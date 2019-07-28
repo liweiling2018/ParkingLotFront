@@ -7,8 +7,7 @@ const addParkingLot = (vm, lot, callback, errback) => {
         url: ip + '/parkinglots',
         data: {
           name: lot.name,
-          capacity: lot.capacity,
-          remine: lot.remine
+          capacity: lot.capacity
         }
       })
       .then(function (response) {
@@ -56,7 +55,7 @@ const deleteParkingLot = (vm, lot, callback, errback) => {
 const getParkingLotByPage = (vm, page, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     let pageSize = 10
-    axios.get(ip + '/parkinglot?page=' + page + "&pageSize=" + pageSize)
+    axios.get(ip + '/parkinglots?pageNum=' + page + "&pageSize=" + pageSize)
     .then(function (response) {
         callback(response.data)
     })
@@ -68,7 +67,7 @@ const getParkingLotByPage = (vm, page, callback, errback) => {
 const getValidParkingLotByPage = (vm, page, callback, errback) => {
   let ip = vm.$store.getters.getConfig.server
   let pageSize = 10
-  axios.get(ip + '/parkinglots?page=' + page + "&pageSize=" + pageSize)
+  axios.get(ip + '/parkinglots?remine=0&pageNum=' + page + "&pageSize=" + pageSize)
   .then(function (response) {
       callback(response.data)
   })
