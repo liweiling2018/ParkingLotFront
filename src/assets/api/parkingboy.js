@@ -1,4 +1,7 @@
 const axios = require('axios')
+const loginError = (vm) => {
+  vm.$router.push({ path: '/login'})
+}
 
 const addParkingBoy = (vm, boy, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
@@ -9,7 +12,7 @@ const addParkingBoy = (vm, boy, callback, errback) => {
           name: boy.name,
           phone: boy.phone,
           age: boy.age,
-          sex: boy.gender,
+          sex: boy.sex,
           status: '',
           tag: '',
           parkingLots: []
@@ -18,6 +21,8 @@ const addParkingBoy = (vm, boy, callback, errback) => {
       .then(function (response) {
         if (response.status == 201) {
           callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
         }
       })
       .catch(function (error) {
@@ -42,7 +47,11 @@ const updateParkingBoy = (vm, boy, callback, errback) => {
         }
       })
       .then(function (response) {
-        callback(response.data)
+        if (response.status == 200) {
+          callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
+        }
       })
       .catch(function (error) {
         errback(error)
@@ -58,6 +67,8 @@ const deleteParkingBoy = (vm, boy, callback, errback) => {
       .then(function (response) {
         if (response.status == 200) {
           callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
         }
       })
       .catch(function (error) {
@@ -71,7 +82,11 @@ const getParkingBoyByPage = (vm, page, callback, errback) => {
     axios.get(ip + '/parkingboy?page=' + page + "&pageSize=" + pageSize)
     .then(function (response) {
         // handle success
-        callback(response.data)
+        if (response.status == 200) {
+          callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
+        }
     })
     .catch(function (error) {
         // handle error

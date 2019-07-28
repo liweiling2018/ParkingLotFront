@@ -9,15 +9,11 @@
 </Form>
 </template>
 <script>
-import {addParkingLot} from '@/assets/api/parkingLot'
+import { updateParkingLot } from '../../assets/api/parkingLot'
 export default {
-    name: 'addParkingLotForm',
+    name: 'addParkingBoyForm',
     data () {
         return {
-            formValidate: {
-                name: '',
-                capacity: ''
-            },
             ruleValidate: {
                 name: [
                     { required: true, message: 'The name cannot be empty', trigger: 'blur' }
@@ -31,13 +27,14 @@ export default {
     methods: {
         
     },
+    props: {
+        formValidate: {}
+    },
     mounted() {
         let vm = this
-        this.$root.$on('addParkingLot', function () {
-            addParkingLot(vm, vm.formValidate, function (data) {
-
+        this.$root.$on('changeParkingLot', function () {
+            updateParkingLot(vm, vm.formValidate, function (data) {
             }, function (err) {
-                console.log(err)
             })
         })
     }

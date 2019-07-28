@@ -1,11 +1,12 @@
 <template>
     <div>
         <Button @click="add" type="primary">新建</Button>
-        <Button type="primary" @click="filter">有空位</Button>
+        <Button @click="filter(false)" type="primary">全部</Button>
+        <Button type="primary" @click="filter(true)">有空位</Button>
         <Modal
         v-model="adding"
-        title="添加一个停车场"
-        @on-ok="ok"
+        title="add parking lot"
+        @on-ok="handleSubmit"
         @on-cancel="cancel">
              <AddParkingLotForm></AddParkingLotForm>
         </Modal>
@@ -14,6 +15,8 @@
 
 <script>
 import AddParkingLotForm from './AddParkingLotForm'
+import { getValidParkingLotByPage } from '@/assets/api/parkingLot'
+
 export default {
     data () {
         return {
@@ -24,14 +27,14 @@ export default {
         add () {
             this.adding = true
         },
-        ok () {
-            this.$Message.info('Clicked ok');
+        handleSubmit () {
+            this.$root.$emit('addParkingLot')
         },
         cancel () {
             this.$Message.info('Clicked cancel');
         },
-        filter () {
-
+        filter (state) {
+            this.$emit("changeFilter", state)
         }
     },
     components: {
