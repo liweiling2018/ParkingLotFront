@@ -75,6 +75,7 @@ export default {
     },
     okChange () {
       this.$root.$emit('changeParkinglot')
+      window.location.reload()
     },
     okFreeze () {
       let vm = this
