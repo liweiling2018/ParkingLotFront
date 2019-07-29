@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import LoginContainer from '@/views/LoginContainer'
+import ReservePark from '@/views/ReservePark'
 
 
 Vue.use(Router)
@@ -17,6 +18,11 @@ export default new Router({
       path: '/login',
       name: 'LoginContainer',
       component: LoginContainer
+    },
+    {
+      path: '/reserve',
+      name: 'Reserve',
+      component: ReservePark
     }
   ]
 })
