@@ -21,14 +21,9 @@ const addParkingLot = (vm, lot, callback, errback) => {
 const updateParkingLot = (vm, lot, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
-        method: 'post',
-        url: ip + '/parkinglots/' + lot.id,
-        data: {
-          id: lot.id,
-          name: lot.name,
-          capacity: lot.capacity,
-          remine: lot.remine
-        }
+        method: 'put',
+        url: ip + '/parkinglots',
+        data: lot
       })
       .then(function (response) {
         callback(response.data)

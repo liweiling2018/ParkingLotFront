@@ -34,6 +34,7 @@ export default {
         let vm = this
         this.$root.$on('changeParkingLot', function () {
             updateParkingLot(vm, vm.formValidate, function (data) {
+                vm.$Message.success('修改成功')
             }, function (err) {
             })
         })

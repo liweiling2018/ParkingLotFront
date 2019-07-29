@@ -35,7 +35,9 @@ export default {
         let vm = this
         this.$root.$on('addParkingLot', function () {
             addParkingLot(vm, vm.formValidate, function (data) {
-
+                if (vm.$store.getters.getParkingLotList.length < 10) {
+                    vm.$store.commit('addParkingLot', data)
+                }
             }, function (err) {
                 console.log(err)
             })
