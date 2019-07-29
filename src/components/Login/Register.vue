@@ -1,7 +1,7 @@
 <<template>
-<div class="login_div">
-    <div class="login_logo">客户注册</div>
-    <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
+<div class="register_div">
+    <div class="register_logo">客户注册</div>
+    <Form   ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right" >
         <FormItem label="用户名" label-for="username" prop="username">
             <Input type="text" v-model="formInline.username" placeholder="请输入用户名" element-id="username">
                  
@@ -135,5 +135,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../assets/styles/login.css");
+@import url("../../assets/styles/register.css");
 </style>
