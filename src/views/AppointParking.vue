@@ -1,9 +1,10 @@
 <template>
 <div class="reserve-container">
-    <div v-if="reserved" class='reserve-div'>
+    <div class='reserve-div'>
         <AppointPark></AppointPark>
     </div>
-    <div v-if="!reserved" class='reserve-div'>
+    <Divider type="vertical" />
+    <div class='reserve-div'>
         <AppointFetch></AppointFetch>
     </div>
 </div>
