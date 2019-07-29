@@ -1,10 +1,11 @@
 <template>
   <Carousel class="login-container" v-model="value1">
     <CarouselItem>
-        <div class="demo-carousel"><AdminLogin></AdminLogin></div>
+        <div class="demo-carousel"><CustomerLogin></CustomerLogin></div>
     </CarouselItem>
     <CarouselItem>
-        <div class="demo-carousel"><CustomerLogin></CustomerLogin></div>
+      <div class="demo-carousel"><AdminLogin></AdminLogin></div>
+        
     </CarouselItem>
   </Carousel>
 </template>
