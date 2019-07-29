@@ -5,7 +5,8 @@
     </div>
     <Divider type="vertical" />
     <div class='reserve-div'>
-        <AppointFetch></AppointFetch>
+        <AppointFetchTable v-show="!rightViewEmpty"></AppointFetchTable>
+        <EmptyRightView v-show="rightViewEmpty"></EmptyRightView>
     </div>
 </div>
     
@@ -13,21 +14,22 @@
 </template>
 
 <script>
-import AppointFetch from "@/components/AppointParking/AppointFetchForm.vue"
+import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
+import EmptyRightView from "@/components/AppointParking/EmptyRightView.vue"
 export default {
     data () {
         return {
-            reserved: true
+            reserved: true,
+            rightViewEmpty: true
         }
     },
     components: {
-        AppointFetch,
+        AppointFetchTable,
         AppointPark
     }
 }
 </script>
 
 <style scoped>
-@import url('../assets/styles/reservePark.css');
 </style>
