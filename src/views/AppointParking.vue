@@ -7,14 +7,15 @@
         <Content :style="{margin: '88px 20px 0',  minHeight: '500px'}">
             <div class="reserve-container">
                 <div class='reserve-div'>
-                <AppointPark @parkOrder='parkOrder'></AppointPark>
+                <AppointPark></AppointPark>
                 </div>
                 <Divider type="vertical" />
                 <div class='reserve-div'>
-                    <AppointFetchTable v-show="!rightViewEmpty"></AppointFetchTable>
-                    <EmptyRightView v-show="rightViewEmpty"></EmptyRightView>
+        <AppointFetchTable v-show="!rightViewEmpty"></AppointFetchTable>
+        <EmptyRightView v-show="rightViewEmpty"></EmptyRightView>
                 </div>
             </div>
+            
         </Content>
         <Footer class="layout-footer-center">2018-2019 &copy; FocusTeam</Footer>
     </Layout>
@@ -25,34 +26,18 @@
 </template>
 
 <script>
-import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
+import AppointFetch from "@/components/AppointParking/AppointFetchForm.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
 import EmptyRightView from "@/components/AppointParking/EmptyRightView.vue"
-import appointParking from '../assets/api/appointParking'
 export default {
     data () {
         return {
-            reserved: true,
-            rightViewEmpty: true
+            reserved: true
         }
     },
     components: {
-        AppointFetchTable,
-        AppointPark,
-        EmptyRightView
-    },
-    methods: {
-        parkOrder (data) {
-            
-        }
-    },
-    mounted () {
-        let vm = this
-        appointParking.getAllReverseOrder(this, this.$store.getters.getUser.id, function(data) {
-            console.log(data)
-        }, function (err) {
-
-        })
+        AppointFetch,
+        AppointPark
     }
 }
 </script>
