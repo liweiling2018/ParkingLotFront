@@ -56,13 +56,12 @@ export default {
   },
   mounted () {
     let vm = this
-    console.log(localStorage.getItem('username'))
-    if (localStorage.getItem('user') == null) {
+    console.log(localStorage.getItem('password'))
+    if (localStorage.getItem('username') == null) {
       vm.$router.push('/login')
     } else {
       let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
       login(this, user, function (data) {
-        vm.$router.push('/')
         vm.$store.commit('setUser', user)
       }, function(fail) {
         vm.$router.push('/login')

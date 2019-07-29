@@ -9,7 +9,7 @@
     </Table>
     <Page @on-change='pageChange' class="page-div" :total="100" />
     <Modal v-model="changing" title="修改停车员信息" @on-ok="okChange" @on-cancel="cancelChange">
-      <ChangeParkingBoyForm v-if="changing" :formValidate='currentParkingBoy'></ChangeParkingBoyForm>
+      <ChangeParkingBoyForm v-show="changing" :formValidate='currentParkingBoy'></ChangeParkingBoyForm>
     </Modal>
     <Modal v-model="freezing" title="冻结停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
       是否确认冻结停车员：{{currentParkingBoy.name}}
@@ -90,6 +90,7 @@ export default {
     okFreeze () {
       let vm = this
       deleteParkingBoy(this, this.currentParkingBoy, function (data) {
+        vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
         vm.$Message.info('冻结成功')
       }, function (err) {
 
