@@ -4,7 +4,7 @@
         <AppointPark></AppointPark>
     </div>
     <div v-if="!reserved" class='reserve-div'>
-        <AppointFetch></AppointFetch>
+        <AppointFetchTable></AppointFetchTable>
     </div>
 </div>
     
@@ -12,16 +12,16 @@
 </template>
 
 <script>
-import AppointFetch from "@/components/AppointParking/AppointFetchForm.vue"
+import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
 export default {
     data () {
         return {
-            reserved: true
+            reserved: false
         }
     },
     components: {
-        AppointFetch,
+        AppointFetchTable,
         AppointPark
     }
 }
