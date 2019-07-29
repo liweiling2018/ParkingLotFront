@@ -74,7 +74,7 @@ export default {
         this.currentParkingLot = row
     },
     okChange () {
-      this.$root.$emit('changeParkinglot')
+      this.$root.$emit('changeParkingLot')
     },
     okFreeze () {
       let vm = this
