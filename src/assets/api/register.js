@@ -1,13 +1,15 @@
 const axios = require('axios')
 import md5 from 'js-md5';
-const user_login = (vm, user, callback, failback, errback) => {
+const user_register = (vm, user, callback, failback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
             method: 'post',
-            url: ip + '/user/login',
+            url: ip + '/user/register',
             data: {
                 userName: user.username,
-                password: user.password
+                password: user.password,
+                carNo: user.car_number,
+                phoneNo: user.tel
             }
         })
         .then(function(response) {
@@ -24,4 +26,4 @@ const user_login = (vm, user, callback, failback, errback) => {
         })
 }
 
-export default user_login
+export default user_register

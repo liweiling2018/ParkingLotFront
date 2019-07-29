@@ -45,9 +45,11 @@ import user_login from "../../assets/api/login"
                     if (valid) {
                         let user=vm.formInline
                         user_login(vm, user, function(data){
-                           vm.$router.push('/');
-                           localStorage.setItem('username', user.username)
-                           localStorage.setItem('password', user.password)
+                            if(data.status == 200 && data.data.type == 0) {
+                                vm.$router.push('/');
+                                localStorage.setItem('username', user.username)
+                                localStorage.setItem('password', user.password)
+                            }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');
                         }, function(data){

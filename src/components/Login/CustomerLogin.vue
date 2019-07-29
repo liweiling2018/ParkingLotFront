@@ -42,6 +42,9 @@ import Register from "./Register.vue";
                 }
             }
         },
+        components:{
+            Register
+        },
         methods: {            
             handleSubmit(name) {
                 let vm=this;
@@ -49,9 +52,11 @@ import Register from "./Register.vue";
                     if (valid) {
                         let user=vm.formInline
                         user_login(vm, user, function(data){
-                           vm.$router.push('/');
-                           localStorage.setItem('username', user.username)
-                           localStorage.setItem('password', user.password)
+                           if(data.status == 200 && data.data.type == 1) {
+                                vm.$router.push('/appoint');
+                                localStorage.setItem('username', user.username)
+                                localStorage.setItem('password', user.password)
+                            }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');
                         }, function(data){
@@ -63,7 +68,7 @@ import Register from "./Register.vue";
                 })
             },
             onRegister(){
-
+                this.$router.push(`/register`);
             }
         }
     }
