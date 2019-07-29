@@ -26,23 +26,42 @@
 </template>
 
 <script>
+import login from '../assets/api/login'
 import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
 import EmptyRightView from "@/components/AppointParking/EmptyRightView.vue"
 export default {
     data () {
         return {
-            reserved: true
+            reserved: true,
+            rightViewEmpty: false
         }
     },
     components: {
         AppointFetchTable,
-        AppointPark
+        AppointPark,
+        EmptyRightView
     },
     mounted () {
-        if (this.$store.getters.getUser.type != 1) {
-            this.$router.push('/login')
-            this.$Message.error('请使用客户账户登录')
+        let vm = this
+        if (localStorage.getItem('username') == null) {
+        vm.$router.push('/login')
+        } else if (this.$store.getters.getUser.type && this.$store.getters.getUser.type != 1) {
+        vm.$router.push('/login')
+        vm.$Message.error('请使用客户账号登录')
+        } else {
+        let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
+        login(this, user, function (data) {
+            if(data.data.type != 1) {
+                vm.$router.push('/login')
+                vm.$Message.error('请使用客户账号登录')
+            }
+            vm.$store.commit('setUser', data.data)
+        }, function(fail) {
+            vm.$router.push('/login')
+        }, function(err) {
+            vm.$router.push('/login')
+        })
         }
     }
 }

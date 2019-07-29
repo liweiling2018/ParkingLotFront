@@ -64,6 +64,10 @@ export default {
     } else {
       let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
       login(this, user, function (data) {
+        if (data.data.type != 0) {
+          vm.$router.push('/login')
+          vm.$Message.error('请使用管理员账号登录')
+        }
         vm.$store.commit('setUser', data.data)
       }, function(fail) {
         vm.$router.push('/login')
