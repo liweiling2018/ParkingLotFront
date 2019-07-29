@@ -54,6 +54,7 @@ import Register from "./Register.vue";
                         user_login(vm, user, function(data){
                            if(data.status == 200 && data.data.type == 1) {
                                 vm.$router.push('/appoint');
+                                vm.$store.commit('setUser', data.data)
                                 localStorage.setItem('username', user.username)
                                 localStorage.setItem('password', user.password)
                             }

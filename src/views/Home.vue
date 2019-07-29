@@ -58,6 +58,9 @@ export default {
     let vm = this
     if (localStorage.getItem('username') == null) {
       vm.$router.push('/login')
+    } else if (this.$store.getters.getUser.type && this.$store.getters.getUser.type != 0) {
+      vm.$router.push('/login')
+      vm.$Message.error('请使用管理员账号登录')
     } else {
       let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
       login(this, user, function (data) {

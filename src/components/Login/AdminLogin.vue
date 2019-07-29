@@ -47,6 +47,7 @@ import user_login from "../../assets/api/login"
                         user_login(vm, user, function(data){
                             if(data.status == 200 && data.data.type == 0) {
                                 vm.$router.push('/');
+                                vm.$store.commit('setUser', data.data)
                                 localStorage.setItem('username', user.username)
                                 localStorage.setItem('password', user.password)
                             }
