@@ -43,9 +43,17 @@
 import user_register from "../../assets/api/register";
 export default {
   data() {
+    const validatePasswordTwo = (rule, value, callback) => {
+        if (value !== this.formInline.password) {
+            callback(new Error('The two input passwords do not match!'));
+        } else {
+            callback();
+        }
+    };
     return {
       modal6: false,
       loading: true,
+      validatePasswordTwo,
       formInline: {
         username: "",
         password: "",
@@ -68,7 +76,8 @@ export default {
         ],
         password_two: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { type: "string", min: 6, trigger: "blur" }
+          { type: "string", min: 6,  trigger: "blur" },
+          {validator:validatePasswordTwo}
         ],
         car_number: [
           { required: true, message: "请输入车牌号", trigger: "blur" }
@@ -116,7 +125,9 @@ export default {
       });
     },
     backToLogin () {
-        this.modal6 = false;
+        setTimeout(() => {
+                    this.modal6 = false;
+                }, 2000);
         this.$router.push('/login');
     }
   }
