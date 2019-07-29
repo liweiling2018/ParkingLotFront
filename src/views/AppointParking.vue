@@ -1,10 +1,11 @@
 <template>
 <div class="reserve-container">
-    <div v-if="reserved" class='reserve-div'>
+    <div class='reserve-div'>
         <AppointPark></AppointPark>
     </div>
-    <div v-if="!reserved" class='reserve-div'>
-        <AppointFetchTable></AppointFetchTable>
+    <Divider type="vertical" />
+    <div class='reserve-div'>
+        <AppointFetch></AppointFetch>
     </div>
 </div>
     
@@ -12,16 +13,16 @@
 </template>
 
 <script>
-import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
+import AppointFetch from "@/components/AppointParking/AppointFetchForm.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
 export default {
     data () {
         return {
-            reserved: false
+            reserved: true
         }
     },
     components: {
-        AppointFetchTable,
+        AppointFetch,
         AppointPark
     }
 }
