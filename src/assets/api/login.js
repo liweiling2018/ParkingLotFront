@@ -19,8 +19,8 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .catch(function (error) {
 
-        errback(error)
-      })
-    }
+            errback(error)
+        })
+}
 
 export default user_login
