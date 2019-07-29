@@ -1,6 +1,6 @@
 <<template>
 <div class="login_div">
-    <div class="login_logo">系统登录</div>
+    <div class="login_logo">管理员登录</div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
         <FormItem label="用户名" label-for="username" prop="username">
             <Input type="text" v-model="formInline.username" placeholder="用户名" element-id="username">
@@ -18,7 +18,7 @@
 </div>
 </template>
 <script>
-import user_login from "../assets/api/login.js"
+import user_login from "../../assets/api/login"
     export default {
         data () {
             return {
@@ -63,5 +63,5 @@ import user_login from "../assets/api/login.js"
 </script>
 
 <style scoped>
-@import url('../assets/styles/login.css');
+@import url('../../assets/styles/login.css');
 </style>
