@@ -12,7 +12,6 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .then(function (response) {
         if (response.status == 200) {
-          vm.$store.commit('setUser', user)
           callback(response.data)
         } else {
           failback(response.data)

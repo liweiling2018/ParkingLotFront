@@ -1,17 +1,8 @@
 <template>
 <div>
 <div id="right-view" class="g-right">
-    <div class="empty-detail-wrapper">
-        <div class="empty-icon">
-            <svg class="icon-empty-task-detail empty-task-detail">
-                <use xlink:href="#empty-task-detail"></use>
-            </svg>
-            <svg class="icon-empty-task-detail-pointer fill-theme">
-                <use xlink:href="#empty-task-detail-pointer"></use>
-            </svg>
-        </div>
-        <span class="empty-detail-view">请预约停车哦！</span>
-    </div>
+    <img src="static\icon.png" alt="" srcset="">
+    <span class="empty-text">请预约停车哦！</span>
 </div>
 </div>
 </template>

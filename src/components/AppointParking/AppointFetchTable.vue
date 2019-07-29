@@ -1,10 +1,35 @@
 <template>
-<div>
-<Table border :columns="columns" :data="orderData">
-    <template slot-scope="{ row, index }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="reverseFetch">预约取车</Button>    
-    </template>
-</Table>
+<div class="appoint-table-container">
+<Row>
+    <Col span="12"><h2>订单号</h2></Col>
+    <Col span="12">{{1231}}</Col>
+</Row>
+<Divider></Divider>
+<Row>
+    <Col span="12"><h2>停车员姓名</h2> </Col>
+    <Col span="12">{{123123}}</Col>
+</Row>
+<Divider></Divider>
+<Row>
+    <Col span="12"><h2>停车员电话</h2></Col>
+    <Col span="12">{{1231}}</Col>
+</Row>
+<Divider></Divider>
+<Row>
+    <Col span="12"><h2>停车时间</h2></Col>
+    <Col span="12">{{142}}</Col>
+</Row>
+<Divider></Divider>
+<Row>
+    <Col span="12"><h2>取车时间</h2></Col>
+    <Col span="12">{{123123}}</Col>
+</Row>
+<Divider></Divider>
+<Row>
+    <Col span="12"><h2>费用</h2></Col>
+    <Col span="12">{{1231}}</Col>
+</Row>
+<Button class="button-fetch" @click="appointPark">预约取车</Button>
 </div>
 </template>
 
@@ -12,39 +37,7 @@
 export default {
     data () {
         return {
-            columns: [
-                    {
-                        title: '订单号',
-                        key: 'orderId'
-                    },
-                    {
-                        title: '停车员姓名',
-                        key: 'age'
-                    },
-                    {
-                        title: '停车员电话',
-                        key: 'address'
-                    },
-                    {
-                        title: '停车时间',
-                        key: 'parkTime'
-                    },
-                    {
-                        title: '取车时间',
-                        key: 'fetchTime'
-                    },
-                    {
-                        title: '费用',
-                        key: 'cost'
-                    },
-                    {
-                        title: '操作',
-                        slot: 'action',
-                        width: 150,
-                        align: 'center'
-                    }
-                ],
-
+        
         }
     },
     computed: {
@@ -60,4 +53,8 @@ export default {
     
 }
 </script>
+
+<style scoped>
+@import url('../../assets/styles/appointPark.css');
+</style>
 

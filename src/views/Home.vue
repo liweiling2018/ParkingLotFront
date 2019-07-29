@@ -8,7 +8,7 @@
             <span class="home-logo-title">滴滴停车</span>
           </div> -->
           <div class="layout-nav">
-            <span class="home-user-name">{{$store.getters.getUser.username}}</span>
+            <span class="home-user-name">{{$store.getters.getUser.userName}}</span>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}
@@ -56,13 +56,12 @@ export default {
   },
   mounted () {
     let vm = this
-    console.log(localStorage.getItem('password'))
     if (localStorage.getItem('username') == null) {
       vm.$router.push('/login')
     } else {
       let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
       login(this, user, function (data) {
-        vm.$store.commit('setUser', user)
+        vm.$store.commit('setUser', data.data)
       }, function(fail) {
         vm.$router.push('/login')
       }, function(err) {
