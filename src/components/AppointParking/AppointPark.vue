@@ -11,6 +11,7 @@
 
 <script>
 import {parkOrder} from '../../assets/api/appointParking'
+import moment from 'moment'
 export default {
     name: "appointParking",
     data() {
@@ -24,7 +25,8 @@ export default {
         },
         appointPark () {
             let vm = this
-            parkOrder(this, this.$store.getters.getUser.id, function (data) {
+            let time = moment(this.appointParkTime).format('YYYY-MM-DD?HH:mm')
+            parkOrder(this, this.$store.getters.getUser.id, time, function (data) {
                 vm.$emit('parkOrder', data)
             }, function (err) {
 

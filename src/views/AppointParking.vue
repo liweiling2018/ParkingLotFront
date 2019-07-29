@@ -7,12 +7,12 @@
         <Content :style="{margin: '88px 20px 0',  minHeight: '500px'}">
             <div class="reserve-container">
                 <div class='reserve-div'>
-                <AppointPark></AppointPark>
+                <AppointPark @parkOrder="parkOrder"></AppointPark>
                 </div>
                 <Divider type="vertical" />
                 <div class='reserve-div'>
-        <AppointFetchTable v-show="!rightViewEmpty"></AppointFetchTable>
-        <EmptyRightView v-show="rightViewEmpty"></EmptyRightView>
+        <AppointFetchTable @fetchcar="fetchcar" :data="order" v-if="!rightViewEmpty"></AppointFetchTable>
+        <EmptyRightView v-if="rightViewEmpty"></EmptyRightView>
                 </div>
             </div>
             
@@ -27,6 +27,7 @@
 
 <script>
 import login from '../assets/api/login'
+import {getAllReverseOrder} from '../assets/api/appointParking'
 import AppointFetchTable from "@/components/AppointParking/AppointFetchTable.vue"
 import AppointPark from "@/components/AppointParking/AppointPark.vue"
 import EmptyRightView from "@/components/AppointParking/EmptyRightView.vue"
@@ -34,13 +35,24 @@ export default {
     data () {
         return {
             reserved: true,
-            rightViewEmpty: false
+            rightViewEmpty: true,
+            order: {}
         }
     },
     components: {
         AppointFetchTable,
         AppointPark,
         EmptyRightView
+    },
+    methods: {
+        parkOrder (data) {
+            this.order = data
+            this.rightViewEmpty = false
+        },
+        fetchcar () {
+            this.order = {}
+            this.rightViewEmpty = true
+        }
     },
     mounted () {
         let vm = this
@@ -57,12 +69,22 @@ export default {
                 vm.$Message.error('请使用客户账号登录')
             }
             vm.$store.commit('setUser', data.data)
+            getAllReverseOrder(vm, vm.$store.getters.getUser.id, function (data) {
+                if (data != null) {
+                    vm.rightViewEmpty = false
+                }
+            }, function (err) {
+
+            })
         }, function(fail) {
             vm.$router.push('/login')
         }, function(err) {
             vm.$router.push('/login')
         })
         }
+        console.log(this.$store.getters.getUser)
+
+        
     }
 }
 </script>

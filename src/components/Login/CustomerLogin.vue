@@ -53,10 +53,11 @@ import Register from "./Register.vue";
                         let user=vm.formInline
                         user_login(vm, user, function(data){
                            if(data.status == 200 && data.data.type == 1) {
-                                vm.$router.push('/appoint');
-                                vm.$store.commit('setUser', data.data)
+                               vm.$store.commit('setUser', data.data)
                                 localStorage.setItem('username', user.username)
                                 localStorage.setItem('password', user.password)
+                                vm.$router.push('/appoint');
+                                
                             }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');
