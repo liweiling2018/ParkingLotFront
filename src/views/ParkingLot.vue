@@ -11,7 +11,7 @@
     <Modal v-model="changing" title="修改停车场信息" @on-ok="okChange" @on-cancel="cancelChange">
       <ChangeParkingLotForm v-if="changing" :formValidate='currentParkingLot'></ChangeParkingLotForm>
     </Modal>
-    <Modal v-model="freezing" title="冻结停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
+    <Modal v-model="freezing" title="冻结停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
       是否确认冻结停车场：{{currentParkingLot.name}}
     </Modal>
   </div>
@@ -75,7 +75,6 @@ export default {
     },
     okChange () {
       this.$root.$emit('changeParkinglot')
-      window.location.reload()
     },
     okFreeze () {
       let vm = this
@@ -106,7 +105,6 @@ export default {
     },
     changeFilter (state) {
       this.filter = state
-      console.log("test")
       this.pageChange(1)
     }
   },
