@@ -72,6 +72,7 @@ export default {
             getAllReverseOrder(vm, vm.$store.getters.getUser.id, function (data) {
                 if (data != null) {
                     vm.rightViewEmpty = false
+                    vm.order = data
                 }
             }, function (err) {
 
