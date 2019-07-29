@@ -13,7 +13,7 @@ const addParkingBoy = (vm, boy, callback, errback) => {
           phone: boy.phone,
           age: boy.age,
           sex: boy.sex,
-          status: '',
+          status: 'busy',
           tag: '',
           parkingLots: []
         }

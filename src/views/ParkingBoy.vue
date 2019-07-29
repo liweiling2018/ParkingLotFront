@@ -52,7 +52,7 @@ export default {
         },
         {
           title: '状态',
-          key: 'state'
+          key: 'status'
         },
         {
           title: '操作',
