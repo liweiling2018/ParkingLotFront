@@ -35,7 +35,7 @@ export default {
         let vm = this
         this.$root.$on('addParkingLot', function () {
             addParkingLot(vm, vm.formValidate, function (data) {
-
+                window.location.reload()
             }, function (err) {
                 console.log(err)
             })
