@@ -1,7 +1,7 @@
 .reserve-div {
   box-shadow: 0 2px 8px 0 rgba(58, 50, 15, 0.06);
   width: 40%;
-  height: 80%;
+  height: 100%;
   position: relative;
   background-color: white;
   float: left;
@@ -12,4 +12,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.ivu-layout {
+  height: 100%;
+}
+
+.reserve-div-outline {
+  height: 100%;
+}
+
+.reserve-logo {
+  color: aliceblue;
 }
