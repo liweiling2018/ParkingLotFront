@@ -1,7 +1,7 @@
 <<template>
-<div class="login_div">
-    <div class="login_logo">客户注册</div>
-    <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
+<div class="register_div">
+    <div class="register_logo">客户注册</div>
+    <Form   ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right" >
         <FormItem label="用户名" label-for="username" prop="username">
             <Input type="text" v-model="formInline.username" placeholder="请输入用户名" element-id="username">
                  
@@ -43,9 +43,17 @@
 import user_register from "../../assets/api/register";
 export default {
   data() {
+    const validatePasswordTwo = (rule, value, callback) => {
+        if (value !== this.formInline.password) {
+            callback(new Error('The two input passwords do not match!'));
+        } else {
+            callback();
+        }
+    };
     return {
       modal6: false,
       loading: true,
+      validatePasswordTwo,
       formInline: {
         username: "",
         password: "",
@@ -68,7 +76,8 @@ export default {
         ],
         password_two: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { type: "string", min: 6, trigger: "blur" }
+          { type: "string", min: 6,  trigger: "blur" },
+          {validator:validatePasswordTwo}
         ],
         car_number: [
           { required: true, message: "请输入车牌号", trigger: "blur" }
@@ -116,7 +125,9 @@ export default {
       });
     },
     backToLogin () {
-        this.modal6 = false;
+        setTimeout(() => {
+                    this.modal6 = false;
+                }, 2000);
         this.$router.push('/login');
     }
   }
@@ -124,5 +135,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../assets/styles/login.css");
+@import url("../../assets/styles/register.css");
 </style>
