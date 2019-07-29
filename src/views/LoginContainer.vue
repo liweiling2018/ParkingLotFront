@@ -4,12 +4,13 @@
         <div class="demo-carousel"><AdminLogin></AdminLogin></div>
     </CarouselItem>
     <CarouselItem>
-        <div class="demo-carousel">用户登录</div>
+        <div class="demo-carousel"><CustomerLogin></CustomerLogin></div>
     </CarouselItem>
   </Carousel>
 </template>
 <script>
 import AdminLogin from '@/components/Login/AdminLogin'
+import CustomerLogin from '@/components/Login/CustomerLogin'
 export default {
   data () {
     return {
@@ -17,7 +18,8 @@ export default {
     }
   },
   components: {
-    AdminLogin
+    AdminLogin,
+    CustomerLogin
   }
 }
 </script>
