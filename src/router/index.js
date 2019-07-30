@@ -4,6 +4,7 @@ import Home from '@/views/Home'
 import LoginContainer from '@/views/LoginContainer'
 import AppointParking from '@/views/AppointParking'
 import Register from '@/components/Login/Register'
+import appointParkingMobile from "@/views/AppointParkingMobile"
 import GrabOrder from '@/views/GrabOrder'
 
 
@@ -24,6 +25,11 @@ export default new Router({
             path: '/appoint',
             name: 'AppointParking',
             component: AppointParking
+        },
+        {
+            path: '/appointMobile',
+            name: 'appointParkingMobile',
+            component: appointParkingMobile
         },
         {
             path: '/register',
