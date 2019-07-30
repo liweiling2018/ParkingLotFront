@@ -1,28 +1,28 @@
 <template>
 <div class="appoint-table-container">
 <Row>
-    <Col span="12"><h2>订单号</h2></Col>
-    <Col span="12">{{data.id}}</Col>
+    <Col span="13"><h2>订单号</h2></Col>
+    <Col span="11">{{data.id}}</Col>
 </Row>
 <Divider></Divider>
 <Row>
-    <Col span="12"><h2>停车员姓名</h2> </Col>
-    <Col span="12">{{data.parkingBoyName}}</Col>
+    <Col span="16"><h2>停车员姓名</h2> </Col>
+    <Col span="8">{{data.parkingBoyName}}</Col>
 </Row>
 <Divider></Divider>
 <Row>
-    <Col span="12"><h2>停车时间</h2></Col>
-    <Col span="12">{{data.startTime}}</Col>
+    <Col span="13"><h2>停车时间</h2></Col>
+    <Col span="11">{{data.startTime}}</Col>
 </Row>
 <Divider></Divider>
 <Row>
-    <Col span="12"><h2>取车时间</h2></Col>
-    <Col span="12">{{data.endTime}}</Col>
+    <Col span="13"><h2>取车时间</h2></Col>
+    <Col span="11">{{data.endTime}}</Col>
 </Row>
 <Divider></Divider>
 <Row>
-    <Col span="12"><h2>费用</h2></Col>
-    <Col span="12">{{data.cost}}</Col>
+    <Col span="13"><h2>费用</h2></Col>
+    <Col span="11">{{data.cost}}</Col>
 </Row>
 <Button class="button-fetch" @click="appointPark">预约取车</Button>
 </div>

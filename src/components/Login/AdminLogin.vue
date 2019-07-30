@@ -12,7 +12,7 @@
             </Input>
         </FormItem>
         <FormItem>
-            <Button type="primary"long @click="handleSubmit('formInline')">登录</Button>
+            <Button type="default" ghost long @click="handleSubmit('formInline')">登录</Button>
         </FormItem>
     </Form>
 </div>

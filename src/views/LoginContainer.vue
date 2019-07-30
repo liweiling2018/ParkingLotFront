@@ -1,13 +1,15 @@
 <template>
+<div class="layout login_body">
   <Carousel class="login-container" v-model="value1">
     <CarouselItem>
-        <div class="demo-carousel"><CustomerLogin></CustomerLogin></div>
+        <div class="demo-carousel login_border"><CustomerLogin></CustomerLogin></div>
     </CarouselItem>
     <CarouselItem>
       <div class="demo-carousel"><AdminLogin></AdminLogin></div>
         
     </CarouselItem>
   </Carousel>
+</div>
 </template>
 <script>
 import AdminLogin from '@/components/Login/AdminLogin'

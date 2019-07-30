@@ -12,10 +12,10 @@
             </Input>
         </FormItem>
         <FormItem>
-            <Button type="primary"long @click="handleSubmit('formInline')">登录</Button>
+            <Button type="default" ghost long @click="handleSubmit('formInline')">登录</Button>
         </FormItem>
         <FormItem>
-            <Button type="primary"long @click="onRegister">注册</Button>
+            <Button type="default" ghost long @click="onRegister">注册</Button>
         </FormItem>
     </Form>
 </div>
@@ -56,7 +56,7 @@ import Register from "./Register.vue";
                                vm.$store.commit('setUser', data.data)
                                 localStorage.setItem('username', user.username)
                                 localStorage.setItem('password', user.password)
-                                vm.$router.push('/appoint');
+                                vm.$router.push('/appointMobile');
                                 
                             }
                         }, function (fail) {
