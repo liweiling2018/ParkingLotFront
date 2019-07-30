@@ -5,6 +5,9 @@ import LoginContainer from '@/views/LoginContainer'
 import AppointParking from '@/views/AppointParking'
 import Register from '@/components/Login/Register'
 import appointParkingMobile from "@/views/AppointParkingMobile"
+import GrabOrder from '@/views/GrabOrder'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -30,8 +33,13 @@ export default new Router({
         },
         {
             path: '/register',
-            name: Register,
+            name: "Register",
             component: Register
+        },
+        {
+            path: '/grab',
+            name: "Grab",
+            component: GrabOrder
         }
     ]
 })

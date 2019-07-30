@@ -109,7 +109,8 @@ export default {
             user,
             function(data) {
               if (data.status == 200) {
-                vm.$router.push("/login");
+                vm.$Message.success("注册成功，跳转到登录页面");
+                vm.backToLogin ();
               }
             },
             function(fail) {
@@ -127,7 +128,7 @@ export default {
     backToLogin () {
         setTimeout(() => {
                     this.modal6 = false;
-                }, 2000);
+                }, 200);
         this.$router.push('/login');
     }
   }

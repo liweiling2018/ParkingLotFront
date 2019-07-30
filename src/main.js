@@ -7,7 +7,11 @@ import store from './store'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 
+import MuseUI from 'muse-ui';
+import 'muse-ui/dist/muse-ui.css';
+
 Vue.use(iView)
+Vue.use(MuseUI)
 
 Vue.config.productionTip = false
 
