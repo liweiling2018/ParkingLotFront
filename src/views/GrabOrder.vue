@@ -89,7 +89,7 @@ export default {
       this.showingOrderMessage = true
     },
     grabOrderSuccess () {
-      this.changePage(1)
+      this.changePage(0)
     }
   },
   mounted () {
