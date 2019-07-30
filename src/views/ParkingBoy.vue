@@ -3,6 +3,7 @@
     <AddParkingBoy class="add-parking-boy"></AddParkingBoy>
     <Table :columns="columns" :data="getParkingBoyList">
       <template slot-scope="{ row }" slot="action">
+        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
         <Button type="error" size="small" @click="freeze(row)">冻结</Button>
       </template>
@@ -14,12 +15,15 @@
     <Modal v-model="freezing" title="冻结停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
       是否确认冻结停车员：{{currentParkingBoy.name}}
     </Modal>
+    <Modal v-model="promoting" title="升级停车员" @on-ok="okPromote" @on-cancel="cancelPromote">
+      是否确认升级停车员：{{currentParkingBoy.name}}
+    </Modal>
   </div>
 </template>
 
 
 <script>
-import {getParkingBoyByPage, deleteParkingBoy} from '../assets/api/parkingboy'
+import {getParkingBoyByPage, deleteParkingBoy, updateParkingBoyTag} from '../assets/api/parkingboy'
 import TableExpand from '@/components/ParkingBoy/TableExpand'
 import AddParkingBoy from '@/components/ParkingBoy/AddParkingBoy'
 import ChangeParkingBoyForm from '@/components/ParkingBoy/ChangeParkingBoyForm'
@@ -55,11 +59,16 @@ export default {
           key: 'status'
         },
         {
+          title: '等级',
+          key: 'tag'
+        },
+        {
           title: '操作',
           key: 'action',
           slot: 'action'
         }
       ],
+      promoting: false,
       changing: false,
       freezing: false,
       currentParkingBoy: {}
@@ -80,6 +89,14 @@ export default {
       this.changing = true
       this.currentParkingBoy = row
     },
+    promote (row) {
+      if(row.tag == 'BLACK_CARD') {
+        this.$Message.info('已是最高等级!')
+      }else {
+        this.promoting = true
+        this.currentParkingBoy = row
+      }
+    },
     freeze (row) {
       this.freezing = true
       this.currentParkingBoy = row
@@ -93,13 +110,36 @@ export default {
         vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
         vm.$Message.info('冻结成功')
       }, function (err) {
+        console.log(err)
 
+      })
+    },
+    okPromote () {
+      let vm = this
+      let updateTag
+      if(vm.currentParkingBoy.tag == 'VIP') {
+        updateTag = 'BLACK_CARD'
+      }
+      if(vm.currentParkingBoy.tag == 'ORDINARY') {
+        updateTag = 'VIP'
+      }
+      let data = {}
+      data['id'] = vm.currentParkingBoy.id
+      data['tag'] = updateTag
+
+      updateParkingBoyTag(vm, data, function (data) {
+        vm.$Message.info('升级成功')
+        vm.currentParkingBoy['tag'] = updateTag
+      }, function (err) {
       })
     },
     cancelFreeze () {
 
     },
     cancelChange () {
+
+    },
+    cancelPromote () {
 
     },
     pageChange (page) {

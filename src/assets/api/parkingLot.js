@@ -71,6 +71,28 @@ const getValidParkingLotByPage = (vm, page, callback, errback) => {
   })
 }
 
+const updateParkingLotTag = (vm, lot, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+    axios({
+        method: 'put',
+        url: ip + '/parkinglots',
+        data: {
+          id: lot.id,
+          tag: lot.tag,
+        }
+      })
+      .then(function (response) {
+        if (response.status == 200) {
+          callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
+        }
+      })
+      .catch(function (error) {
+        errback(error)
+      })
+}
+
 
 
 module.exports = {
@@ -78,5 +100,6 @@ module.exports = {
     getParkingLotByPage,
     updateParkingLot,
     deleteParkingLot,
-    getValidParkingLotByPage
+    getValidParkingLotByPage,
+    updateParkingLotTag
 }

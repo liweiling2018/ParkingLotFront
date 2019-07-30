@@ -19,6 +19,14 @@ export default {
     setParkingLot (state, payload) {
         state.parkingLotList = payload
     },
+    deleteParkingLot (state, payload) {
+        state.parkingLotList = state.parkingLotList.filter ((item) => {
+            if (item.id == payload.id) {
+                return false
+            }
+            return true
+        })
+    },
     setUser (state, payload) {
         state.user = payload
     }

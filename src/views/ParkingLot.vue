@@ -3,6 +3,7 @@
     <AddParkingLot class="add-parking-lot" @changeFilter="changeFilter"></AddParkingLot>
     <Table :columns="columns" :data="getParkingLotList">
       <template slot-scope="{ row }" slot="action">
+        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
         <Button type="error" size="small" @click="freeze(row)">冻结</Button>
       </template>
@@ -14,12 +15,15 @@
     <Modal v-model="freezing" title="冻结停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
       是否确认冻结停车场：{{currentParkingLot.name}}
     </Modal>
+    <Modal v-model="promoting" title="升级停车场" @on-ok="okPromote" @on-cancel="cancelPromote">
+      是否确认升级停车场：{{currentParkingLot.name}}
+    </Modal>
   </div>
 </template>
 
 
 <script>
-import {getParkingLotByPage, getValidParkingLotByPage, deleteParkingLot} from '../assets/api/parkingLot'
+import {getParkingLotByPage, getValidParkingLotByPage, deleteParkingLot, updateParkingLotTag} from '../assets/api/parkingLot'
 import AddParkingLot from '@/components/ParkingLot/AddParkingLot'
 import ChangeParkingLotForm from '@/components/ParkingLot/ChangeParkingLotForm'
 export default {
@@ -43,6 +47,10 @@ export default {
           key: 'remine'
         },
         {
+          title: '等级',
+          key: 'tag'
+        },
+        {
           title: '操作',
           key: 'action',
           slot: 'action'
@@ -51,6 +59,7 @@ export default {
       changing: false,
       freezing: false,
       filter: false,
+      promoting: false,
       currentParkingLot: {}
     }
   },
@@ -73,20 +82,51 @@ export default {
         this.freezing = true
         this.currentParkingLot = row
     },
+    promote (row) {
+      if(row.tag == 'BLACK_CARD') {
+        this.$Message.info('已是最高等级!')
+      }else {
+        this.promoting = true
+        this.currentParkingLot = row
+      }
+    },
     okChange () {
       this.$root.$emit('changeParkingLot')
     },
     okFreeze () {
       let vm = this
       deleteParkingLot(this, this.currentParkingLot, function (data) {
+        vm.$store.commit('deleteParkingLot', vm.currentParkingLot)
         vm.$Message.info('冻结成功')
-        window.location.reload()
+      }, function (err) {
+
+      })
+    },
+    okPromote () {
+      let vm = this
+      let updateTag 
+      
+      if(vm.currentParkingLot.tag == 'VIP') {
+        updateTag = 'BLACK_CARD'
+      }
+      if(vm.currentParkingLot.tag == 'ORDINARY') {
+        updateTag = 'VIP'
+      }
+      let data = {}
+      data['id'] = vm.currentParkingLot.id
+      data['tag'] = updateTag
+      updateParkingLotTag(this, data, function (data) {
+        vm.$Message.info('升级成功')
+        vm.currentParkingLot['tag'] = updateTag
       })
     },
     cancelFreeze () {
 
     },
     cancelChange () {
+
+    },
+    cancelPromote () {
 
     },
     pageChange (page) {

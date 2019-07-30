@@ -113,10 +113,33 @@ const getParkingBoyByFilterword = (vm, filterword, callback, errback) => {
     })
 }
 
+const updateParkingBoyTag = (vm, boy, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+    axios({
+        method: 'patch',
+        url: ip + '/parkingboy',
+        data: {
+          id: boy.id,
+          tag: boy.tag
+        }
+      })
+      .then(function (response) {
+        if (response.status == 200) {
+          callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
+        }
+      })
+      .catch(function (error) {
+        errback(error)
+      })
+}
+
 module.exports = {
     addParkingBoy,
     getParkingBoyByPage,
     updateParkingBoy,
     deleteParkingBoy,
-    getParkingBoyByFilterword
+    getParkingBoyByFilterword,
+    updateParkingBoyTag
 }
