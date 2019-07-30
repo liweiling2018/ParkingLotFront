@@ -3,18 +3,21 @@
   <mu-appbar class="order-top" style="width: 100%;" color="#515a6e">
     滴滴停车抢单系统
   </mu-appbar>
-  <div v-if="!showingOrderMessage" class='order-content'>
-    <component :orderList="orderList" :is="GrabOrderListPages[currentPageId].component"></component>
+  <div data-mu-loading-color="secondary" data-mu-loading-overlay-color="rgba(0, 0, 0, .7)" v-loading="loading2">
+    <div v-if="!showingOrderMessage" class='order-content'>
+      <component @selectOrder='selectOrder' :orderList="orderList" :is="GrabOrderListPages[currentPageId].component"></component>
+    </div>
+    <div v-if="showingOrderMessage" class="order-content">
+      <OrderMessage @grabOrderSuccess="grabOrderSuccess" :orderMessage="orderMessage"></OrderMessage>
+    </div>
+    <mu-bottom-nav @change="changePage" class="order-bottom">
+      <mu-bottom-nav-item icon="search" title="搜索订单"></mu-bottom-nav-item>
+      <mu-bottom-nav-item icon="list" title="已接订单"></mu-bottom-nav-item>
+      <mu-bottom-nav-item icon="done" title="已完成订单" ></mu-bottom-nav-item>
+      <mu-bottom-nav-item icon="face" title="用户" ></mu-bottom-nav-item>
+    </mu-bottom-nav>
   </div>
-  <div v-if="showingOrderMessage" class="order-content">
-    <OrderMessage></OrderMessage>
-  </div>
-  <mu-bottom-nav @change="changePage" class="order-bottom">
-    <mu-bottom-nav-item icon="search" title="搜索订单"></mu-bottom-nav-item>
-    <mu-bottom-nav-item icon="list" title="已接订单"></mu-bottom-nav-item>
-    <mu-bottom-nav-item icon="done" title="已完成订单" ></mu-bottom-nav-item>
-    <mu-bottom-nav-item icon="face" title="用户" ></mu-bottom-nav-item>
-  </mu-bottom-nav>
+  
   <mu-snackbar :position="normal.position" :open.sync="normal.open">
       {{normal.message}}
       <mu-button flat slot="action" color="secondary" @click="normal.open = false">关闭</mu-button>
@@ -45,7 +48,9 @@ export default {
         message: '请先进行登录',
         open: false,
         timeout: 3000
-      }
+      },
+      orderMessage: {},
+      loading2: false
     }
   },
   components: {
@@ -57,12 +62,17 @@ export default {
     changePage (page) {
       if (page == 3) {
         this.currentPageId = page
+        this.showingOrderMessage = false
         return
       }
       let vm = this
+      this.orderList = []
       this.currentPageId = page
+      this.showingOrderMessage = false
+      this.loading2 = true
       getOrdersWithFilter(this, vm.$store.getters.getUser.id, page, function (data) {
-        vm.orderList = data
+          vm.orderList = data
+        vm.loading2 = false
       }, function (err) {
 
       })
@@ -73,6 +83,13 @@ export default {
       this.normal.timer = setTimeout(() => {
         this.normal.open = false;
       }, this.normal.timeout);
+    },
+    selectOrder (data) {
+      this.orderMessage = data;
+      this.showingOrderMessage = true
+    },
+    grabOrderSuccess () {
+      this.changePage(1)
     }
   },
   mounted () {
@@ -85,7 +102,6 @@ export default {
         localStorage.setItem('username', user.username)
         localStorage.setItem('password', user.password)
         vm.changePage(0)
-        console.log(111)
       } else {
         vm.openNormalSnackbar()
       }

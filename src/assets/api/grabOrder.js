@@ -48,7 +48,6 @@ const parkingBoyChangePass = (vm, parkingBoy, failback, callback, errback) => {
 
 const getOrdersWithFilter = (vm, parkingBoyId, condition, callback, errback) => {
   let ip = vm.$store.getters.getConfig.server
-  console.log(parkingBoyId)
   axios({
     method: 'get',
     url: ip + '/orderdetailsdto/' + parkingBoyId + '/' + condition,
@@ -64,12 +63,39 @@ const getOrdersWithFilter = (vm, parkingBoyId, condition, callback, errback) => 
 }
 
 const getOrderMessageById = (vm, orderId, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+  axios({
+    method: 'get',
+    url: ip + '/orderdetailsdto/' + orderId,
+  })
+  .then(function (response) {
+    callback(response.data)
+  })
+  .catch(function (error) {
 
+        errback(error)
+    })
+}
+
+const grabOrder  = (vm, parkingBoyId, orderId, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+  axios({
+    method: 'get',
+    url: ip + '/parkingboy?parkingBoyId=' + parkingBoyId + "&orderId=" + orderId,
+  })
+  .then(function (response) {
+    callback(response.data)
+  })
+  .catch(function (error) {
+
+        errback(error)
+    })
 }
 
 module.exports = {
   parkingBoyLogin,
   parkingBoyChangePass,
   getOrdersWithFilter,
-  getOrderMessageById
+  getOrderMessageById,
+  grabOrder
 }

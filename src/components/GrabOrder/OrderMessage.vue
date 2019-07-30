@@ -23,27 +23,32 @@
     </div>
     <div>
       订单状态：
-      <mu-text-field v-model="orderMessage.status" disabled></mu-text-field>
+      <mu-text-field v-model="orderMessage.state" disabled></mu-text-field>
     </div>
-    <mu-button class="grab-button" v-if="orderMessage.status == 0" @click="grabOrder" fab color="#515a6e">
+    <mu-button class="grab-button" v-if="orderMessage.state == '未接单'" @click="grabOrder" fab color="#515a6e">
       <mu-icon value="add"></mu-icon>
     </mu-button>
   </div>
 </template>
 
 <script>
+import { grabOrder } from '../../assets/api/grabOrder'
 export default {
   data () {
     return {
-      orderMessage: {
-        id: 1,
-        status: 0
-      }
     }
+  },
+  props: {
+    orderMessage: {}
   },
   methods: {
     grabOrder () {
+      let vm = this
+      grabOrder(vm, vm.$store.getters.getUser.id, orderMessage.id ,function (data) {
+        vm.$emit('grabOrderSuccess')
+      }, function (err) {
 
+      })
     }
   }
 }

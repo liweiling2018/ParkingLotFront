@@ -10,8 +10,8 @@
           </mu-avatar>
         </mu-list-item-action>
         <mu-list-item-content>
-          <mu-list-item-title>{{item.orderName}}</mu-list-item-title>
-          <mu-list-item-sub-title>{{item.orderTime}}</mu-list-item-sub-title>
+          <mu-list-item-title>{{item.id}}</mu-list-item-title>
+          <mu-list-item-sub-title>{{item.startTime}}</mu-list-item-sub-title>
         </mu-list-item-content>
       </mu-list-item>
       <mu-divider></mu-divider>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { getOrderMessageById } from '../../assets/api/grabOrder'
 export default {
   data () {
     return {
@@ -30,6 +31,12 @@ export default {
   },
   methods: {
     selectOrder (value) {
+      let vm = this
+      getOrderMessageById(this, value.id, function (data) {
+        vm.$emit('selectOrder', data)
+      }, function (err) {
+
+      })
     }
   },
   props: {
