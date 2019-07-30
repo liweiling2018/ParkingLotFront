@@ -51,6 +51,8 @@ import user_login from "../../assets/api/login"
                                 localStorage.setItem('password', user.password)
                                 vm.$router.push('/');
                                 
+                            }else{
+                                vm.$Message.error('登录失败，用户名或密码错误');
                             }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');

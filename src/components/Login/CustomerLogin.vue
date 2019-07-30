@@ -57,7 +57,9 @@ import Register from "./Register.vue";
                                 localStorage.setItem('username', user.username)
                                 localStorage.setItem('password', user.password)
                                 vm.$router.push('/appoint');
-                                
+
+                            }else{
+                                vm.$Message.error('登录失败，用户名或密码错误');
                             }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');
