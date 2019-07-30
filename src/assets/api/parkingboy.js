@@ -34,7 +34,7 @@ const updateParkingBoy = (vm, boy, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     axios({
         method: 'patch',
-        url: ip + '/parkingboy/' + boy.id,
+        url: ip + '/parkingboy',
         data: {
           id: boy.id,
           name: boy.name,
