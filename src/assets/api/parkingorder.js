@@ -3,7 +3,7 @@ const axios = require('axios')
 const getParkingOrderByPage = (vm, page, callback, errback) => {
     let ip = vm.$store.getters.getConfig.server
     let pageSize = 10
-    axios.get(ip + '/parkingorders?page=' + page + "&pageSize=" + pageSize)
+    axios.get(ip + '/orderdetailsdto?page=' + page + "&size=" + pageSize)
     .then(function (response) {
         // handle success
         if (response.status == 200) {
