@@ -51,7 +51,10 @@ export default {
         appointPark () {
             let vm = this
             fetch(this, this.data, function (data) {
-                vm.$Message.success('预约成功')
+                vm.$Notice.open({
+                    title: '取车成功',
+                    desc:  '您的费用是：' + data.cost
+                });
                 vm.$emit('fetchcar')
             }, function(err) {
 
