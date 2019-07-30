@@ -36,6 +36,7 @@
 <script>
 import ParkingLot from '@/views/ParkingLot'
 import ParkingBoy from '@/views/ParkingBoy'
+import ParkingOrder from '@/views/ParkingOrder'
 import login from '../assets/api/login'
 export default {
   data () {
@@ -44,7 +45,8 @@ export default {
       ],
       sliderMenuItemList: [
         { name:'1', text: '停车场管理', component: ParkingLot},
-        { name:'2', text: '停车员管理', component: ParkingBoy }
+        { name:'2', text: '停车员管理', component: ParkingBoy },
+        { name:'3', text: '订单管理', component: ParkingOrder}
       ],
       currentSliderItemIndex: 0 
     }
