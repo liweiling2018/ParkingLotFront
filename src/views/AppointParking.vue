@@ -70,7 +70,7 @@ export default {
             }
             vm.$store.commit('setUser', data.data)
             getAllReverseOrder(vm, vm.$store.getters.getUser.id, function (data) {
-                if (data != null) {
+                if (data !== null) {
                     vm.rightViewEmpty = false
                     vm.order = data
                 }
