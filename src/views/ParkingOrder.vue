@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Table :columns="columns" :data="parkingOrderList"></Table>
-    <Page @on-change='pageChange' class="page-div" :total="100" />
+    <Table :loading="loading" :columns="columns" :data="parkingOrderList"></Table>
+    <Page @on-change='pageChange' class="page-div" :total="100" />  
   </div>
 </template>
 
@@ -45,8 +45,13 @@ export default {
           title: '费用',
           key: 'cost'
         },
+        {
+          title: "状态",
+          key: "state"
+        }
       ],
-      parkingOrderList: []
+      parkingOrderList: [],
+      loading: true
     }
   },
   methods: {
@@ -54,6 +59,7 @@ export default {
       let vm = this
       getParkingOrderByPage(this, page, function (data) {
         vm.parkingOrderList = data
+        vm.loading = false
       }, function (err) {
       })
     }
