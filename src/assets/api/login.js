@@ -12,7 +12,6 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .then(function (response) {
         if (response.status == 200) {
-          vm.$store.commit('setUser', user)
           callback(response.data)
         } else {
           failback(response.data)
@@ -20,8 +19,8 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .catch(function (error) {
 
-        errback(error)
-      })
-    }
+            errback(error)
+        })
+}
 
 export default user_login

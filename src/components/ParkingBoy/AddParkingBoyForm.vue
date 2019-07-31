@@ -57,7 +57,6 @@ export default {
                     vm.$store.commit('addParkingBoy', data)
                 }
             }, function (err) {
-                console.log(err)
             })
         })
     }

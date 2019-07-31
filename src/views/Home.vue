@@ -8,7 +8,7 @@
             <span class="home-logo-title">滴滴停车</span>
           </div> -->
           <div class="layout-nav">
-            <span class="home-user-name">{{$store.getters.getUser.username}}</span>
+            <span class="home-user-name">{{$store.getters.getUser.userName}}</span>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}
@@ -36,6 +36,7 @@
 <script>
 import ParkingLot from '@/views/ParkingLot'
 import ParkingBoy from '@/views/ParkingBoy'
+import ParkingOrder from '@/views/ParkingOrder'
 import login from '../assets/api/login'
 export default {
   data () {
@@ -44,7 +45,8 @@ export default {
       ],
       sliderMenuItemList: [
         { name:'1', text: '停车场管理', component: ParkingLot},
-        { name:'2', text: '停车员管理', component: ParkingBoy }
+        { name:'2', text: '停车员管理', component: ParkingBoy },
+        { name:'3', text: '订单管理', component: ParkingOrder}
       ],
       currentSliderItemIndex: 0 
     }
@@ -56,13 +58,19 @@ export default {
   },
   mounted () {
     let vm = this
-    console.log(localStorage.getItem('password'))
     if (localStorage.getItem('username') == null) {
       vm.$router.push('/login')
+    } else if (this.$store.getters.getUser.type && this.$store.getters.getUser.type != 0) {
+      vm.$router.push('/login')
+      vm.$Message.error('请使用管理员账号登录')
     } else {
       let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
       login(this, user, function (data) {
-        vm.$store.commit('setUser', user)
+        if (data.data.type != 0) {
+          vm.$router.push('/login')
+          vm.$Message.error('请使用管理员账号登录')
+        }
+        vm.$store.commit('setUser', data.data)
       }, function(fail) {
         vm.$router.push('/login')
       }, function(err) {

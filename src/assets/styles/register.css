@@ -1,0 +1,27 @@
+.register_div {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.register_logo {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-family: "Hiragino Sans GB";
+    font-weight: bold;
+    font-size: 20px;
+    color: aliceblue;
+    background-color: dodgerblue;
+    margin: 150px 0 60px 100px;
+    border: 1px solid skyblue;
+    border-radius: 50%;
+}
+
+.register-container {
+    position: relative;
+    top: 250px;
+}
+
+.register-form {
+    margin: 200px auto;
+}

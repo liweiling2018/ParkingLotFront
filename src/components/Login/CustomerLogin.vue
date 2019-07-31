@@ -1,6 +1,6 @@
 <<template>
 <div class="login_div">
-    <div class="login_logo">系统登录</div>
+    <div class="login_logo">客户登录</div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
         <FormItem label="用户名" label-for="username" prop="username">
             <Input type="text" v-model="formInline.username" placeholder="用户名" element-id="username">
@@ -12,13 +12,17 @@
             </Input>
         </FormItem>
         <FormItem>
-            <Button type="primary"long @click="handleSubmit('formInline')">登录</Button>
+            <Button type="default" ghost long @click="handleSubmit('formInline')">登录</Button>
+        </FormItem>
+        <FormItem>
+            <Button type="default" ghost long @click="onRegister">注册</Button>
         </FormItem>
     </Form>
 </div>
 </template>
 <script>
-import user_login from "../assets/api/login.js"
+import user_login from "../../assets/api/login";
+import Register from "./Register.vue";
     export default {
         data () {
             return {
@@ -38,6 +42,9 @@ import user_login from "../assets/api/login.js"
                 }
             }
         },
+        components:{
+            Register
+        },
         methods: {            
             handleSubmit(name) {
                 let vm=this;
@@ -45,9 +52,13 @@ import user_login from "../assets/api/login.js"
                     if (valid) {
                         let user=vm.formInline
                         user_login(vm, user, function(data){
-                           vm.$router.push('/');
-                           localStorage.setItem('username', user.username)
-                           localStorage.setItem('password', user.password)
+                           if(data.status == 200 && data.data.type == 1) {
+                               vm.$store.commit('setUser', data.data)
+                                localStorage.setItem('username', user.username)
+                                localStorage.setItem('password', user.password)
+                                vm.$router.push('/appointMobile');
+                                
+                            }
                         }, function (fail) {
                             vm.$Message.error('登录失败，用户名或密码错误');
                         }, function(data){
@@ -57,11 +68,14 @@ import user_login from "../assets/api/login.js"
                         vm.$Message.error('Fail!');
                     }
                 })
+            },
+            onRegister(){
+                this.$router.push(`/register`);
             }
         }
     }
 </script>
 
 <style scoped>
-@import url('../assets/styles/login.css');
+@import url('../../assets/styles/login.css');
 </style>

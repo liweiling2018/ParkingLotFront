@@ -39,7 +39,6 @@ export default {
                     vm.$store.commit('addParkingLot', data)
                 }
             }, function (err) {
-                console.log(err)
             })
         })
     }
