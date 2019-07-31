@@ -72,9 +72,9 @@ export default {
       this.loading2 = true
       getOrdersWithFilter(this, vm.$store.getters.getUser.id, page, function (data) {
           vm.orderList = data
-        vm.loading2 = false
+          vm.loading2 = false
       }, function (err) {
-
+        vm.loading2 = false
       })
     },
     openNormalSnackbar () {
