@@ -3,9 +3,9 @@
     <AddParkingLot class="add-parking-lot" @changeFilter="changeFilter"></AddParkingLot>
     <Table :columns="columns" :data="getParkingLotList">
       <template slot-scope="{ row }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
         <Button type="error" size="small" @click="freeze(row)">冻结</Button>
+        <Button v-if="row.tag != 'BLACK_CARD'" type="success" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
       </template>
     </Table>
     <Page @on-change='pageChange' class="page-div" :total="100" />
@@ -83,12 +83,8 @@ export default {
         this.currentParkingLot = row
     },
     promote (row) {
-      if(row.tag == 'BLACK_CARD') {
-        this.$Message.info('已是最高等级!')
-      }else {
-        this.promoting = true
-        this.currentParkingLot = row
-      }
+      this.promoting = true
+      this.currentParkingLot = row
     },
     okChange () {
       this.$root.$emit('changeParkingLot')
@@ -105,7 +101,6 @@ export default {
     okPromote () {
       let vm = this
       let updateTag 
-      
       if(vm.currentParkingLot.tag == 'VIP') {
         updateTag = 'BLACK_CARD'
       }

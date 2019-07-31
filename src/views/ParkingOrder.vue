@@ -45,6 +45,10 @@ export default {
           title: '费用',
           key: 'cost'
         },
+        {
+          title: "状态",
+          key: "state"
+        }
       ],
       parkingOrderList: []
     }

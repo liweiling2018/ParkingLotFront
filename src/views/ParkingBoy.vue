@@ -3,9 +3,9 @@
     <AddParkingBoy class="add-parking-boy"></AddParkingBoy>
     <Table :columns="columns" :data="getParkingBoyList">
       <template slot-scope="{ row }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
         <Button type="error" size="small" @click="freeze(row)">冻结</Button>
+        <Button v-if="row.tag != 'BLACK_CARD'" type="success" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
       </template>
     </Table>
     <Page @on-change='pageChange' class="page-div" :total="100" />
