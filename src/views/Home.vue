@@ -3,12 +3,13 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
-          <!-- <div class="layout-logo">
+          <div class="layout-logo">
             <img class='home-logo' src="../../static/icon.png" alt="" srcset="">
-            <span class="home-logo-title">滴滴停车</span>
-          </div> -->
+            <!-- <span class="home-logo-title">滴滴停车</span> -->
+          </div>
           <div class="layout-nav">
-            <span class="home-user-name">{{$store.getters.getUser.userName}}</span>
+            <Avatar class="home-user-icon" icon="ios-person" size="large" />
+            <span class="home-user-name">Hi! {{$store.getters.getUser.userName}}</span>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}
@@ -37,6 +38,7 @@
 import ParkingLot from '@/views/ParkingLot'
 import ParkingBoy from '@/views/ParkingBoy'
 import ParkingOrder from '@/views/ParkingOrder'
+import ParkingLotDashBoard from "@/views/ParkingLotDashBoard"
 import login from '../assets/api/login'
 export default {
   data () {
@@ -46,7 +48,8 @@ export default {
       sliderMenuItemList: [
         { name:'1', text: '停车场管理', component: ParkingLot},
         { name:'2', text: '停车员管理', component: ParkingBoy },
-        { name:'3', text: '订单管理', component: ParkingOrder}
+        { name:'3', text: '订单管理', component: ParkingOrder},
+        { name:'4', text: '停车场DashBoard', component: ParkingLotDashBoard},
       ],
       currentSliderItemIndex: 0 
     }

@@ -36,8 +36,12 @@
 }
 
 .home-user-name {
-    color: aqua;
+    color: white;
     float: right;
+    font-size: 20px;
+    padding: 0px;
+    text-shadow: 1px;
+    font-weight: bolder;
 }
 
 .home-logo {
@@ -47,4 +51,14 @@
 .home-logo-title {
     height: 30px;
     line-height: 30px;
+    color: rgb(142, 207, 238);
+    font-size: 20px;
+    
+    
+}
+
+.home-user-icon {
+    margin-left: 200px;
+    padding: 0px;
+    background-color: rgb(18, 155, 247);
 }
