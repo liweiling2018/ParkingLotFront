@@ -49,6 +49,18 @@ export default {
               name: '停车场B',
               capacity: 8,
               remine: 2
+            },
+            {
+              id: '2',
+              name: '停车场C',
+              capacity: 8,
+              remine: 3
+            },
+            {
+              id: '3',
+              name: '停车场D',
+              capacity: 8,
+              remine: 7
             }
           ]
         }
