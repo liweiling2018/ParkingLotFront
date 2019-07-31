@@ -1,32 +1,36 @@
 <<template>
-<div class="register_div">
+<div class = "register_body">
+<div class="register_div" style="padding-bottom: 40px;
+    border-radius: 15px;padding: 0;border-width:5px;border-style:solid;position: relative;
+    top: 13.9%;">
     <div class="register_logo">客户注册</div>
     <Form   ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right" >
-        <FormItem label="用户名" label-for="username" prop="username">
+        <FormItem label="用户名" label-for="username" prop="username" style="margin-right:6%">
             <Input type="text" v-model="formInline.username" placeholder="请输入用户名" element-id="username">
                  
             </Input>
         </FormItem>
-        <FormItem label="密码" label-for="password" prop="password">
+        <FormItem label="密码" label-for="password" prop="password" style="margin-right:6%">
             <Input type="password" v-model="formInline.password" placeholder="请输入密码" element-id="password">
             </Input>
         </FormItem>
-        <FormItem label="确认密码" label-for="password_two" prop="password_two">
+        <FormItem label="确认密码" label-for="password_two" prop="password_two" style="margin-right:6%">
             <Input type="password" v-model="formInline.password_two" placeholder="请再次输入密码" element-id="password_two">
             </Input>
         </FormItem>
-         <FormItem label="车牌号" label-for="car_number" prop="car_number">
+         <FormItem label="车牌号" label-for="car_number" prop="car_number" style="margin-right:6%">
             <Input type="text" v-model="formInline.car_number" placeholder="车牌号" element-id="car_number">
                  
             </Input>
         </FormItem>
-         <FormItem label="电话号码" label-for="tel" prop="tel">
+         <FormItem label="电话号码" label-for="tel" prop="tel" style="margin-right:6%">
             <Input type="text" v-model="formInline.tel" placeholder="电话号码" element-id="tel">
                  
             </Input>
         </FormItem>
-        <FormItem>
-            <Button type="primary"long @click="handleSubmit('formInline')">确认注册</Button>
+        <FormItem style="margin-right:6%">
+            <Button type="primary"long @click="handleSubmit('formInline')" style="background-color: skyblue;">
+              <span style="font-weight:bold;">确认注册</span></Button>
             <Modal
                 v-model="modal6"
                 title="Title"
@@ -37,6 +41,7 @@
         </FormItem>
     </Form>
 </div>
+</div>
 </template>
 <script>
 // import user_login from "../../assets/api/login";
@@ -45,7 +50,7 @@ export default {
   data() {
     const validatePasswordTwo = (rule, value, callback) => {
         if (value !== this.formInline.password) {
-            callback(new Error('The two input passwords do not match!'));
+            callback(new Error('两次输入的密码不匹配！'));
         } else {
             callback();
         }
@@ -129,7 +134,7 @@ export default {
         setTimeout(() => {
                     this.modal6 = false;
                 }, 200);
-        this.$router.push('/login');
+        this.$router.push('/login_customer');
     }
   }
 };
