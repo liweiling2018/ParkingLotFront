@@ -19,6 +19,11 @@ Vue.use(MuseUI)
 
 Vue.config.productionTip = false
 
+import mandMobile from 'mand-mobile'
+import 'mand-mobile/lib/mand-mobile.css'
+
+Vue.use(mandMobile)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

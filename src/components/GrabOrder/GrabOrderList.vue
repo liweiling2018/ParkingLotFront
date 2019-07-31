@@ -10,7 +10,7 @@
           </mu-avatar>
         </mu-list-item-action>
         <mu-list-item-content>
-          <mu-list-item-title>{{item.id}}</mu-list-item-title>
+          <mu-list-item-title>{{item.orderNum}}</mu-list-item-title>
           <mu-list-item-sub-title>{{item.startTime}}</mu-list-item-sub-title>
         </mu-list-item-content>
       </mu-list-item>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
 import { getOrderMessageById } from '../../assets/api/grabOrder'
 export default {
   data () {
@@ -38,6 +39,9 @@ export default {
 
       })
     }
+  },
+  components: {
+    
   },
   props: {
     orderList: Array
