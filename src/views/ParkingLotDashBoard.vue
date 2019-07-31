@@ -1,82 +1,137 @@
 <template>
     <div>
-        <ul>
-            <li>
-                <Row>
-                    <Col span="15">
-                        <Card>
-                            <p slot="title"><span>停车场A</span><span></span></p>
-                            <p>停车情况</p>
-                            <div id="main" style="width: 200px;height:200px;"></div>
-                        </Card>
-                    </Col>
-                </Row>
-            </li>
-        </ul>
+        <div id="parking-lot-chart" :style="{width: '1200px', height: '700px'}"></div>
     </div>
 </template>
 
 <script>
 import echarts from "echarts"
+
 export default {
-        data (){
-            return {
-                msg:"123"
-            }
-        },
         mounted (){
-            var myChart = echarts.init(document.getElementById('main'));
-//             myChart.setOption({
-//     title :'环形图',
-//     tooltip: {
-//         trigger: 'item',
-//         formatter: "{a} <br/>{b}: {c} ({d}%)"
-//     },
-//     legend: {
-//         orient: 'vertical',
-//         x: 'left',
-//         data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-//     },
-//     series: [
-//         {
-//             name:'访问来源',
-//             type:'pie',
-//             radius: ['50%', '70%'],
-//             avoidLabelOverlap: false,
-//             label: {
-//                 normal: {
-//                     show: false,
-//                     position: 'center'
-//                 },
-//                 emphasis: {
-//                     show: true,
-//                     textStyle: {
-//                         fontSize: '30',
-//                         fontWeight: 'bold'
-//                     }
-//                 }
-//             },
-//             labelLine: {
-//                 normal: {
-//                     show: false
-//                 }
-//             },
-//             data:[
-//                 {value:335, name:'直接访问'},
-//                 {value:310, name:'邮件营销'},
-//                 {value:234, name:'联盟广告'},
-//                 {value:135, name:'视频广告'},
-//                 {value:1548, name:'搜索引擎'}
-//             ]
-//         }
-//     ]
-// });
-}
+            this.drawChart()
+        },
+        methods: {
+            drawChart() {
+                let chart = echarts.init(document.getElementById('parking-lot-chart'));
+                chart.setOption(this.getOptions())
+            }, 
+            getOptions() {
+                let parkingLotList = this.$store.getters.getParkingLotList
+                console.log(parkingLotList)
+                let parkingLotNames = []
+                let parkingLotUseds = []
+                let parkingLotRemains = []
+                for(let item of parkingLotList) {
+                    parkingLotNames.push(item.name)
+                    parkingLotUseds.push(item.capacity - item.remine)
+                    parkingLotRemains.push(item.remine)
+                }
+                parkingLotNames.unshift('name')
+                parkingLotUseds.unshift('已用量')
+                parkingLotRemains.unshift('剩余量')
+                let datasource = []
+                datasource.push(parkingLotNames)
+                datasource.push(parkingLotUseds)
+                datasource.push(parkingLotRemains)
+                console.log(datasource)
+                
+                let option = {
+                    legend: {},
+                    tooltip: {},
+                    title: {
+                        text: '停车场使用状况'
+                    },
+                    dataset: {
+                        source: datasource
+                    },
+                    series: [{
+                        name: parkingLotNames[1],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['20%', '30%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[1]
+                        }
+                    }, 
+                    {
+                        name: parkingLotNames[2],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['40%', '30%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[2]
+                        }
+                    }, 
+                    {
+                        name: parkingLotNames[3],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['60%', '30%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[3]
+                        }
+                    },
+                    {
+                        name: parkingLotNames[4],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['80%', '30%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[4]
+                        }
+                    },
+                    {
+                        name: parkingLotNames[5],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['20%', '60%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[5]
+                        }
+                    }, 
+                    {
+                        name: parkingLotNames[6],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['40%', '60%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[6]
+                        }
+                    }, 
+                    {
+                        name: parkingLotNames[7],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['60%', '60%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[7]
+                        }
+                    },
+                    {
+                        name: parkingLotNames[8],
+                        type: 'pie',
+                        radius: 60,
+                        center: ['80%', '60%'],
+                        encode: {
+                            itemName: 'name',
+                            value: parkingLotNames[8]
+                        }
+                    }]
+                }
+                return option
+             }
+        }
 }
 </script>
 
-<style>
-ul li{
-    list-style: none;
-}
+<style scoped>
+@import url('../assets/styles/parkinglotdashboard.css');
 </style>
