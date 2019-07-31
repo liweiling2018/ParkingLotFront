@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='grab-content-container'>
 <Welcome v-if="isLogin == -1"></Welcome>
 <div v-if='isLogin != -1' class='grab-content-container'>
   <mu-appbar class="order-top" style="width: 100%;" color="#515a6e">
@@ -136,16 +136,25 @@ export default {
           vm.$store.commit('setUser', data.data)
           localStorage.setItem('username', user.username)
           localStorage.setItem('password', user.password)
-          vm.isLogin = 1
-          vm.changePage(0)
+          setTimeout(()=> {
+            vm.isLogin = 1
+            vm.changePage(0)},
+            2000)
+          
         }
         else {
-          vm.isLogin = 0
+          setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
         }
       }, function (fail) {
-        vm.isLogin = 0
+        setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
       }, function (err) {
-        vm.isLogin = 0
+        setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
       })
     }
     
