@@ -2301,6 +2301,13 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+echarts@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.npm.taobao.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  integrity sha1-mo6jsDNU+G+CTZdiXDNM8Wll7wM=
+  dependencies:
+    zrender "4.0.7"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -3920,6 +3927,11 @@ make-dir@^1.0.0:
   dependencies:
     pify "^3.0.0"
 
+mand-mobile@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.npm.taobao.org/mand-mobile/download/mand-mobile-2.4.0.tgz#556f2a1933fe092f4debb47fd6e04e0c82fa8e8e"
+  integrity sha1-VW8qGTP+CS9N67R/1uBODIL6jo4=
+
 map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.npm.taobao.org/map-cache/download/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
@@ -4375,6 +4387,11 @@ normalize-wheel@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/normalize-wheel/download/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
   integrity sha1-rsiGr/2wRQcNhWRH32Ls+GFG7EU=
+
+normalize.css@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.npm.taobao.org/normalize.css/download/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+  integrity sha1-m5iiCHOLnMJjTKrLxC0THJdIe/M=
 
 npm-bundled@^1.0.1:
   version "1.0.6"
@@ -7164,3 +7181,8 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zrender@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  integrity sha1-Fa6WCCL17+1BCZXTflEH/j3hDm0=

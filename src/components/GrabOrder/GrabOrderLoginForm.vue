@@ -1,16 +1,18 @@
 <template>
 <div>
-<mu-container class="grab-form-container">
+<GrabOrderChangePassForm @parkingBoyChangePassSuccess='parkingBoyChangePassSuccess' v-if="!hasChangePass"></GrabOrderChangePassForm>
+<mu-container v-if="hasChangePass" class="grab-form-container">
+  <mu-sub-header class="parking-login-header">停车员登录</mu-sub-header>
   <mu-form ref="form" :model="validateForm" class="mu-demo-form">
-    <mu-form-item label="username"  prop="username" :rules="usernameRules">
-      <mu-text-field v-model="validateForm.username" prop="username"></mu-text-field>
+    <mu-form-item label=""  prop="username" :rules="usernameRules">
+      <mu-text-field v-model="validateForm.username" placeholder='username' prop="username"></mu-text-field>
     </mu-form-item>
-    <mu-form-item label="password" prop="password" :rules="passwordRules">
-        <mu-text-field type="password" v-model="validateForm.password" prop="password"></mu-text-field>
+    <mu-form-item label="" prop="password"  :rules="passwordRules">
+        <mu-text-field type="password" placeholder='password' v-model="validateForm.password" prop="password"></mu-text-field>
     </mu-form-item>
     <mu-form-item>
-      <mu-button color="primary" @click="submit">提交</mu-button>
-      <mu-button @click="clear">重置</mu-button>
+      <mu-button round color="primary" @click="submit">登录</mu-button>
+      <mu-button round @click="clear">重置</mu-button>
     </mu-form-item>
   </mu-form>
 </mu-container>
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import GrabOrderChangePassForm from './GrabOrderChangePassForm'
 import { parkingBoyLogin } from '../../assets/api/grabOrder'
 export default {
   data () {
@@ -34,8 +37,12 @@ export default {
       validateForm: {
         username: '',
         password: '',
-      }
+      },
+      hasChangePass: true
     }
+  },
+  components: {
+    GrabOrderChangePassForm
   },
   methods: {
     submit () {
@@ -53,15 +60,24 @@ export default {
     },
     login (vm, user) {
       parkingBoyLogin(vm, user, function (data) {
-        if (data.status == 200 ) {
-          vm.$store.commit('setUser', data.data)
-          localStorage.setItem('username', user.username)
-          localStorage.setItem('password', user.password)
-          vm.$emit('parkingBoyLoginSuccess')
+        if (data.status == 200 ) { 
+          if (user.password == '123456') {
+            vm.$store.commit('setUser', data.data)
+            localStorage.setItem('username', user.username)
+            vm.hasChangePass = false
+          } else {
+            vm.$store.commit('setUser', data.data)
+            localStorage.setItem('username', user.username)
+            localStorage.setItem('password', user.password)
+            vm.$emit('parkingBoyLoginSuccess')
+          } 
         }
       }, function (fail) {}, function (err) {
 
       })
+    },
+    parkingBoyChangePassSuccess () {
+      this.$emit('parkingBoyChangePassSuccess')
     }
   },
   mounted () {
@@ -73,6 +89,9 @@ export default {
 </script>
 <style>
 .grab-form-container {
-  margin-top: 20px;
+  padding: 20px;
+}
+.mu-form {
+  margin-top: 50px;
 }
 </style>
