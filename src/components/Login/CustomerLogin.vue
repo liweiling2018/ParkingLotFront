@@ -76,6 +76,6 @@
 //     }
 // </script>
 
-// <style scoped>
-// @import url('../../assets/styles/login.css');
-// </style>
+<style scoped>
+@import url('../../assets/styles/login.css');
+</style>
