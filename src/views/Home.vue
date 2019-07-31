@@ -3,12 +3,13 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
-          <!-- <div class="layout-logo">
+          <div class="layout-logo">
             <img class='home-logo' src="../../static/icon.png" alt="" srcset="">
-            <span class="home-logo-title">滴滴停车</span>
-          </div> -->
+            <!-- <span class="home-logo-title">滴滴停车</span> -->
+          </div>
           <div class="layout-nav">
-            <span class="home-user-name">{{$store.getters.getUser.userName}}</span>
+            <Avatar class="home-user-icon" icon="ios-person" size="large" />
+            <span class="home-user-name">Hi! {{$store.getters.getUser.userName}}</span>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}

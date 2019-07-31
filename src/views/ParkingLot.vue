@@ -4,7 +4,7 @@
     <Table :columns="columns" :data="getParkingLotList">
       <template slot-scope="{ row }" slot="action">
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
-        <Button type="error" size="small" @click="freeze(row)">冻结</Button>
+        <Button type="error" size="small" @click="freeze(row)">删除</Button>
         <Button v-if="row.tag != 'BLACK_CARD'" type="success" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
       </template>
     </Table>
@@ -12,8 +12,8 @@
     <Modal v-model="changing" title="修改停车场信息" @on-ok="okChange" @on-cancel="cancelChange">
       <ChangeParkingLotForm v-if="changing" :formValidate='currentParkingLot'></ChangeParkingLotForm>
     </Modal>
-    <Modal v-model="freezing" title="冻结停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
-      是否确认冻结停车场：{{currentParkingLot.name}}
+    <Modal v-model="freezing" title="删除停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
+      是否确认删除停车场：{{currentParkingLot.name}}
     </Modal>
     <Modal v-model="promoting" title="升级停车场" @on-ok="okPromote" @on-cancel="cancelPromote">
       是否确认升级停车场：{{currentParkingLot.name}}
@@ -30,10 +30,6 @@ export default {
   data () {
     return {
       columns: [
-        {
-          title: 'Id',
-          key: 'id'
-        },
         {
           title: '名字',
           key: 'name'
