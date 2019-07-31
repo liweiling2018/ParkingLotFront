@@ -135,11 +135,50 @@ const updateParkingBoyTag = (vm, boy, callback, errback) => {
       })
 }
 
+const getParkingLotsWithSamTagButNotManage = (vm, boyId, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+  axios.get(ip + '/parkingboy?parkingBoyId=' + boyId)
+    .then(function (response) {
+        // handle success
+        if (response.status == 200) {
+          callback(response.data)
+        } else if (response.status == 401) {
+          loginError(vm)
+        }
+    })
+    .catch(function (error) {
+        // handle error
+        errback(error)
+    })
+}
+
+const updateParkingLots = (vm, boyId, newList , callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+
+  axios({
+    method: 'put',
+    url: ip + '/parkingboy/updateParkingLotList/' + boyId,
+    data: newList
+  })
+  .then(function (response) {
+    if (response.status == 200) {
+      callback(response.data)
+    } else if (response.status == 401) {
+      loginError(vm)
+    }
+  })
+  .catch(function (error) {
+    errback(error)
+  })
+}
+
 module.exports = {
     addParkingBoy,
     getParkingBoyByPage,
     updateParkingBoy,
     deleteParkingBoy,
     getParkingBoyByFilterword,
-    updateParkingBoyTag
+    updateParkingBoyTag,
+    getParkingLotsWithSamTagButNotManage,
+    updateParkingLots
 }

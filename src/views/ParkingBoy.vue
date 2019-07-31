@@ -1,7 +1,7 @@
 <template>
   <div>
     <AddParkingBoy class="add-parking-boy"></AddParkingBoy>
-    <Table :columns="columns" :data="getParkingBoyList">
+    <Table height="550" :columns="columns" :data="getParkingBoyList">
       <template slot-scope="{ row }" slot="action">
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
         <Button type="error" size="small" @click="freeze(row)">删除</Button>
@@ -31,17 +31,17 @@ export default {
   data () {
     return {
       columns: [
-        // {
-        //   type: 'expand',
-        //   width: 50,
-        //   render: (h, params) => {
-        //     return h(TableExpand, {
-        //       props: {
-        //         row: params.row
-        //       }
-        //     })
-        //   }
-        // },
+        {
+          type: 'expand',
+          width: 50,
+          render: (h, params) => {
+            return h(TableExpand, {
+              props: {
+                row: params.row
+              }
+            })
+          }
+        },
         {
           title: '员工编号',
           key: 'id'
