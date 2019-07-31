@@ -42,10 +42,6 @@ export default {
           key: 'endTime'
         },
         {
-          title: '停车时间',
-          key: 'startTime'
-        },
-        {
           title: '费用',
           key: 'cost'
         },
