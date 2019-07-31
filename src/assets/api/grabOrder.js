@@ -25,12 +25,13 @@ const parkingBoyLogin  = (vm, parkingBoy,  callback, failback, errback) => {
 
 const parkingBoyChangePass = (vm, parkingBoy, failback, callback, errback) => {
   let ip = vm.$store.getters.getConfig.server
+  console.log(parkingBoy)
   axios({
     method: 'put',
     url: ip + '/parkingboy/reset',
     data: {
       name: parkingBoy.username,
-      password: parkingBoy.new_password
+      password: parkingBoy.password
     }
   })
   .then(function (response) {
