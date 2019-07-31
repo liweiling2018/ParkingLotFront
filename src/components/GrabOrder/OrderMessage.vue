@@ -45,7 +45,7 @@ export default {
     grabOrder () {
       let vm = this
       grabOrder(vm, vm.$store.getters.getUser.id, vm.orderMessage.id ,function (data) {
-        vm.$emit('grabOrderSuccess')
+        vm.$emit('grabOrderSuccess', {status: data.status, orderMessage: vm.orderMessage})
       }, function (err) {
 
       })

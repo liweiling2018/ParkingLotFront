@@ -88,8 +88,16 @@ export default {
       this.orderMessage = data;
       this.showingOrderMessage = true
     },
-    grabOrderSuccess () {
-      this.changePage(0)
+    grabOrderSuccess (data) {
+      if (data.status == 200) {
+        data.orderMessage.state = '已预约'
+        data.orderMessage.parkingBoyName = localStorage.getItem('username')
+        this.orderMessage = data.orderMessage
+        this.showingOrderMessage = true
+      }
+      else {
+        this.changePage(0)
+      }
     }
   },
   mounted () {
