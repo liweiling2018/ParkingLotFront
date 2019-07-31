@@ -90,12 +90,8 @@ export default {
       this.currentParkingBoy = row
     },
     promote (row) {
-      if(row.tag == 'BLACK_CARD') {
-        this.$Message.info('已是最高等级!')
-      }else {
-        this.promoting = true
-        this.currentParkingBoy = row
-      }
+      this.promoting = true
+      this.currentParkingBoy = row
     },
     freeze (row) {
       this.freezing = true
