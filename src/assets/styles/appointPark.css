@@ -10,9 +10,7 @@
     background-color: #0B243B;
     border: none;
     border-radius: 15px;
-    /* box-shadow: 0 9px #999; */
-    margin-top: 50px;
-}
+    box-shadow: 0 9px #999; 
 
 .button:hover {
     background-color: #97cbee
@@ -22,7 +20,8 @@
     background-color: #3e8e41;
     box-shadow: 0 px #666;
     transform: translateY(4px);
-} */
+} 
+*/
 
 
 /* .datePicker {
