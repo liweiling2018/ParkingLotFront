@@ -12,6 +12,7 @@ const user_login = (vm, user, callback, failback, errback) => {
       })
       .then(function (response) {
         if (response.status == 200) {
+          localStorage.setItem('token', response.data.msg)
           callback(response.data)
         } else {
           failback(response.data)
