@@ -15,7 +15,6 @@
         <EmptyRightView v-if="rightViewEmpty"></EmptyRightView>
                 </div>
             </div>
-            
         </Content>
         <Footer class="layout-footer-center">2018-2019 &copy; FocusTeam</Footer>
     </Layout>

@@ -18,7 +18,6 @@ export default {
             }, 
             getOptions() {
                 let parkingLotList = this.$store.getters.getParkingLotList
-                console.log(parkingLotList)
                 let parkingLotNames = []
                 let parkingLotUseds = []
                 let parkingLotRemains = []
@@ -34,7 +33,6 @@ export default {
                 datasource.push(parkingLotNames)
                 datasource.push(parkingLotUseds)
                 datasource.push(parkingLotRemains)
-                console.log(datasource)
                 
                 let option = {
                     legend: {},

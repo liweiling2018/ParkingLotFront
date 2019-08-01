@@ -5,7 +5,7 @@
         format="yyyy-MM-dd HH:mm" placeholder="选择预约日期(今天或者明天)和时间"></DatePicker>
     </div>
     <div>
-        <Button class="button" @click="appointPark" style="border-radius: 15px;">预约停车</Button>
+        <Button class="button-park" @click="appointPark" type="primary" shape="circle" size="large">预约停车</Button>
     </div>
 </div>
 </template>
@@ -44,6 +44,11 @@ export default {
             
         },
         cancel () {
+
+        },
+        test () {
+            alert("test")
+            console.log("test")
 
         }
 

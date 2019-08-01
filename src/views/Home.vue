@@ -8,8 +8,11 @@
             <span class="home-logo-title">滴滴停车</span>
           </div>
           <div class="layout-nav">
-            <Avatar class="home-user-icon" icon="ios-person" size="large" />
-            <span class="home-user-name">Hi! {{$store.getters.getUser.userName}}</span>
+            <div>
+              <Avatar class="home-user-icon" icon="ios-person" size="large" />
+              <span class="home-user-name">Hi! {{$store.getters.getUser.userName}}</span>
+              <Button class="home-logout-button" size="small" @click="logout">退出</Button>
+            </div>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
               {{item.text}}
@@ -31,6 +34,9 @@
         </Layout>
       </Layout>
     </Layout>
+    <Modal v-model="logouting" title="退出系统" @on-ok="okLogout" @on-cancel="cancelLogout">
+      是否确认退出系统？
+    </Modal>
   </div>
 </template>
 
@@ -51,12 +57,23 @@ export default {
         { name:'3', text: '订单管理', component: ParkingOrder},
         { name:'4', text: '停车场DashBoard', component: ParkingLotDashBoard},
       ],
-      currentSliderItemIndex: 0 
+      currentSliderItemIndex: 0 ,
+      logouting: false
     }
   },
   methods: {
     selectSliderMenu (name) {
       this.currentSliderItemIndex = parseInt(name) - 1
+    },
+    logout () {
+      this.logouting = true
+    },
+    okLogout () {
+      this.$store.commit("setUser", {})
+      this.$router.push('/login')
+    },
+    cancelLogout () {
+
     }
   },
   mounted () {
