@@ -81,6 +81,8 @@ export default {
                 localStorage.setItem("username", user.username);
                 localStorage.setItem("password", user.password);
                 vm.$router.push("/appointMobile");
+              }else{
+                vm.$Message.error("登录失败，用户名或密码错误");
               }
             },
             function(fail) {

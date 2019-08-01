@@ -120,6 +120,8 @@ export default {
               if (data.status == 200) {
                 vm.$Message.success("注册成功，跳转到登录页面");
                 vm.backToLogin ();
+              }else{
+                vm.$Message.error(data.msg);
               }
             },
             function(fail) {
