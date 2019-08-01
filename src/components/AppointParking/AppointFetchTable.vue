@@ -40,8 +40,8 @@
         <Col span="11">{{data.cost}}</Col>
       </Row>
     </div>
-    <Button class="button-fetch" @click="appointPark">预约取车</Button>
-    <Button class="button-fetch" @click="exitLogin">退出登录</Button>
+    <Button icon="ios-car-outline" class="button-fetch" @click="appointPark" type="primary" shape="circle" size="large" style="background-color:#696969;font-family: Microsoft Yahei;font-size: 14px;letter-spacing: 0.pt;">预约取车</Button>
+    <Button size="small" icon="ios-power-outline" shape="circle" class="fetch-logout-button" @click="exitLogin" style="border-radius: 40px;"></Button>
   </div>
 </template>
 

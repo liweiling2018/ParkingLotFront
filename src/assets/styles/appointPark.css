@@ -51,3 +51,10 @@
     bottom: 490px;
     left: 58px;
 }
+
+.fetch-logout-button {
+    float: right;
+    position: relative;
+    bottom: 544px;
+    left: 9px;
+}
