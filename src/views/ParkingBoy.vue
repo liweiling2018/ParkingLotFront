@@ -104,7 +104,7 @@ export default {
       let vm = this
       deleteParkingBoy(this, this.currentParkingBoy, function (data) {
         vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
-        vm.$Message.info('冻结成功')
+        vm.$Message.info('删除成功')
       }, function (err) {
         console.log(err)
 

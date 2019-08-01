@@ -4,8 +4,8 @@
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
           <div class="layout-logo">
-            <img class='home-logo' src="../../static/icon.png" alt="" srcset="">
-            <!-- <span class="home-logo-title">滴滴停车</span> -->
+            <!-- <img class='home-logo' src="../../static/icon.png" alt="" srcset=""> -->
+            <span class="home-logo-title">滴滴停车</span>
           </div>
           <div class="layout-nav">
             <Avatar class="home-user-icon" icon="ios-person" size="large" />

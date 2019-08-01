@@ -13,7 +13,7 @@ export default {
         },
         methods: {
             drawChart() {
-                let chart = echarts.init(document.getElementById('parking-lot-chart'));
+                let chart = echarts.init(document.getElementById('parking-lot-chart'), 'light');
                 chart.setOption(this.getOptions())
             }, 
             getOptions() {

@@ -89,7 +89,7 @@ export default {
       let vm = this
       deleteParkingLot(this, this.currentParkingLot, function (data) {
         vm.$store.commit('deleteParkingLot', vm.currentParkingLot)
-        vm.$Message.info('冻结成功')
+        vm.$Message.info('删除成功')
       }, function (err) {
 
       })
