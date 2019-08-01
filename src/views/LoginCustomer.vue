@@ -1,36 +1,38 @@
 <<template>
 
-<div class="layout login_body" style="background:#F2F2F2 no-repeat;opacity: 0.81;">
-  <!-- <span style="font-size:50px;font:bold;text-decoration:underline;">滴滴停车系统</span> -->
- <div style="display:inline-block;margin-top:10%;border-radius: 15px;padding: 3%;border-width:1px;border-style:solid;"> 
-   <span style="font-size:30px;font-family:Microsoft Yahei;font:bold;">滴滴停车</span>
-   </div>
+<div class="layout login_body" style="padding-top: 130px;background:white no-repeat;opacity: 0.81;">
+ <div>
+   <img style="width:120px;height:100px"src="static\image\parking.png"/>
+ </div>
 <div class="login_div" style="padding-bottom: 40px;
-    border-radius: 15px;padding: 0;border-width:1px;border-style:solid;position: relative;
-    top: 7%;">
-    <div class="login_logo" style="margin-left:30%;color:#0B243B">客户登录</div>
+    border-radius: 15px;padding: 0;border-width:1.4px;border-style:solid;position: relative;
+    top: 3%; margin-div: 50px;">
+    <div class="login_logo" style="margin-left:30%;color:#0B243B;">User</div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
-        <FormItem label="" label-for="username" prop="username" style="margin-left:-20%;margin-right:8%">
+        <FormItem label="" label-for="username" prop="username" style="margin-left:-20%;margin-right:8%;font-family: georgia, serif">
             <Input type="text" v-model="formInline.username" placeholder="用户名" element-id="username">
-                 
+                 <Icon type="ios-contact" slot="prefix" />
             </Input>
         </FormItem>
         <FormItem label="" label-for="password" prop="password" style="margin-left:-20%;margin-right:8%">
             <Input type="password" v-model="formInline.password" placeholder="请输入密码" element-id="password">
+                <Icon type="md-lock" slot="prefix"/>
             </Input>
         </FormItem>
-        <FormItem style="margin-left:-20%;margin-right:8%;background-color: rgb(red, green, blue);">
+        <FormItem style="margin-left:-20%;margin-right:8%;background-color: rgb(red, green, blue);margin-top:2px;margin-bottom:7px">
             <Button type="default" ghost long @click="handleSubmit('formInline')" 
-            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;">登录</Button>
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#696969;">登录</Button>
         </FormItem>
         <FormItem style="margin-left:-20%;margin-right:8%;background-color: rgb(red, green, blue);">
             <Button type="default" ghost long @click="onRegister" 
-            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%">注册</Button>
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#696969;margin-bottom:12%">注册</Button>
         </FormItem>
     </Form>
 
     </div>
-    <p style="margin:70% 8% ;text-align:left;">登录注册代表同意用户协议、隐私政策和中国移动认证服务条款</p>
+    <pre style="margin:50% 8% ;text-align:center;font-family: Microsoft Yahei;font-size: 13px;letter-spacing: 0.3pt;" >
+    登录注册代表同意用户协议
+   隐私政策和中国移动认证服务条款</pre>
 </div>
   
 </template>

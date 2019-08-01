@@ -4,7 +4,7 @@
     /* font-weight:bold; */
     /* background: gray url(car.jpg) no-repeat; */
     /* background: gray url(../../../static/img/5.jpg) no-repeat; */
-    background: #F2F2F2 no-repeat;
+    background:white no-repeat;
     /* background-size: 2000px; */
     /* background-size: auto; */
     /* background-size: 100%; */
@@ -16,7 +16,7 @@
 }
 
 .register_div {
-    width: 300px;
+    width: 270px;
     margin: 0 auto;
 }
 
