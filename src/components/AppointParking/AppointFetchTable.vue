@@ -24,7 +24,7 @@
     <Col span="13"><h2>费用</h2></Col>
     <Col span="11">{{data.cost}}</Col>
 </Row>
-<Button class="button-fetch" @click="appointPark">预约取车</Button>
+<Button class="button-fetch" @click="appointPark" type="primary" shape="circle" size="large">预约取车</Button>
 </div>
 </template>
 
