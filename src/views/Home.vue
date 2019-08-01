@@ -11,7 +11,7 @@
             <div>
               <Avatar class="home-user-icon" icon="ios-person" size="large" />
               <span class="home-user-name">Hi! {{$store.getters.getUser.userName}}</span>
-              <!-- <Button class="home-logout-button" type="primary" size="small" @click="logout">logout</Button> -->
+              <Button class="home-logout-button" size="small" @click="logout">退出</Button>
             </div>
             <MenuItem v-for="(item, index) in headMenuItemList" :key = index :name="item.name">
               <Icon :type="item.iconType"></Icon>
