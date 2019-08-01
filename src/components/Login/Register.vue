@@ -1,9 +1,9 @@
 <<template>
 <div class = "register_body">
 <div class="register_div" style="padding-bottom: 40px;
-    border-radius: 15px;padding: 0;border-width:5px;border-style:solid;position: relative;
-    top: 13.9%;">
-    <div class="register_logo">客户注册</div>
+    border-radius: 15px;padding: 0;border-width:1px;border-style:solid;position: relative;
+    top: 8%;">
+    <div class="register_logo" style="color:#0B243B">客户注册</div>
     <Form   ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right" >
         <FormItem label="用户名" label-for="username" prop="username" style="margin-right:6%">
             <Input type="text" v-model="formInline.username" placeholder="请输入用户名" element-id="username">
@@ -29,7 +29,8 @@
             </Input>
         </FormItem>
         <FormItem style="margin-right:6%">
-            <Button type="primary"long @click="handleSubmit('formInline')" style="background-color: skyblue;">
+            <Button type="primary"long @click="handleSubmit('formInline')" 
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%">
               <span style="font-weight:bold;">确认注册</span></Button>
             <Modal
                 v-model="modal6"
@@ -38,6 +39,9 @@
                 @on-ok="backToLogin">
                 <p>注册成功，返回登录界面登录</p>
             </Modal>
+            <Button type="primary"long @click="handleCancel('formInline')" 
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%;">
+              <span style="font-weight:bold;">取消</span></Button>
         </FormItem>
     </Form>
 </div>
@@ -135,6 +139,9 @@ export default {
                     this.modal6 = false;
                 }, 200);
         this.$router.push('/login_customer');
+    },
+    handleCancel(){
+      this.$router.push('/login_customer');
     }
   }
 };

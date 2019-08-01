@@ -3,7 +3,8 @@
     height: 100%;
     /* font-weight:bold; */
     /* background: gray url(car.jpg) no-repeat; */
-    background: gray url(../../../static/img/5.jpg) no-repeat;
+    /* background: gray url(../../../static/img/5.jpg) no-repeat; */
+    background: #F2F2F2 no-repeat;
     /* background-size: 2000px; */
     /* background-size: auto; */
     /* background-size: 100%; */
@@ -26,14 +27,15 @@
     font-family: "Hiragino Sans GB";
     font-weight: bold;
     font-size: 20px;
-    color: aliceblue;
+    /* color: aliceblue; */
+    color: #0B243B;
     /* background-color: dodgerblue; */
     background-color: rgb(red, green, blue);
     /* margin: 150px 0 60px 100px; */
     margin: 50px 0 50px 31%;
-    border: 1px solid skyblue;
+    border: 1px solid #0B243B;
     border-radius: 50%;
-    opacity: 0.7;
+    /* opacity: 0.7; */
 }
 
 .register-container {

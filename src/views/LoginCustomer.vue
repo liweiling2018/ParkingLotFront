@@ -1,13 +1,14 @@
 <<template>
-<div class="layout login_body">
+
+<div class="layout login_body" style="background:#F2F2F2 no-repeat;opacity: 0.81;">
   <!-- <span style="font-size:50px;font:bold;text-decoration:underline;">滴滴停车系统</span> -->
  <div style="display:inline-block;margin-top:10%;border-radius: 15px;padding: 3%;border-width:1px;border-style:solid;"> 
-   <span style="font-size:30px;font:bold;">滴滴停车系统</span>
+   <span style="font-size:30px;font-family:Microsoft Yahei;font:bold;">滴滴停车</span>
    </div>
 <div class="login_div" style="padding-bottom: 40px;
-    border-radius: 15px;padding: 0;border-width:5px;border-style:solid;position: relative;
+    border-radius: 15px;padding: 0;border-width:1px;border-style:solid;position: relative;
     top: 7%;">
-    <div class="login_logo" style="margin-left:30%;">客户登录</div>
+    <div class="login_logo" style="margin-left:30%;color:#0B243B">客户登录</div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
         <FormItem label="" label-for="username" prop="username" style="margin-left:-20%;margin-right:8%">
             <Input type="text" v-model="formInline.username" placeholder="用户名" element-id="username">
@@ -18,15 +19,20 @@
             <Input type="password" v-model="formInline.password" placeholder="请输入密码" element-id="password">
             </Input>
         </FormItem>
-        <FormItem style="margin-left:-20%;margin-right:8%">
-            <Button type="default" ghost long @click="handleSubmit('formInline')" style="background-color: skyblue;">登录</Button>
+        <FormItem style="margin-left:-20%;margin-right:8%;background-color: rgb(red, green, blue);">
+            <Button type="default" ghost long @click="handleSubmit('formInline')" 
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;">登录</Button>
         </FormItem>
-        <FormItem style="margin-left:-20%;margin-right:8%;opacity: 0.8;background-color: rgb(red, green, blue);">
-            <Button type="default" ghost long @click="onRegister" style="background-color: skyblue;">注册</Button>
+        <FormItem style="margin-left:-20%;margin-right:8%;background-color: rgb(red, green, blue);">
+            <Button type="default" ghost long @click="onRegister" 
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%">注册</Button>
         </FormItem>
     </Form>
+
     </div>
+    <p style="margin:70% 8% ;text-align:left;">登录注册代表同意用户协议、隐私政策和中国移动认证服务条款</p>
 </div>
+  
 </template>
 <script>
 import user_login from "../assets/api/login";

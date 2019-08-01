@@ -51,8 +51,9 @@
 .home-logo-title {
     height: 30px;
     line-height: 30px;
-    color: rgb(142, 207, 238);
+    color: white;
     font-size: 20px;
+    font-weight: bolder;
     
     
 }

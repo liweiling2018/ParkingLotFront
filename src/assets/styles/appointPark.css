@@ -3,31 +3,34 @@
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
-    text-align: center;   
+    text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: rgb(27, 111, 160);
+    background-color: #0B243B;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #999;
+    /* box-shadow: 0 9px #999; */
     margin-top: 50px;
-  }
-  
-.button:hover {background-color: #97cbee}
-  
+}
+
+.button:hover {
+    background-color: #97cbee
+}
+
 .button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
 
+
 /* .datePicker {
     margin-top: 300px;
 } */
 
 .appoint-table-container {
-    margin: 50px 0 0 0;
+    margin: 15px 0 0 0;
     padding: 30px;
 }
 
@@ -36,19 +39,21 @@
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
-    text-align: center;   
+    text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: rgb(27, 111, 160);
+    background-color: #0B243B;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #999;
-    margin-top: 150px;
-  }
-  
-.button-fetch:hover {background-color: #97cbee}
-  
+    /* box-shadow: 0 9px #999; */
+    margin-top: 15%;
+}
+
+.button-fetch:hover {
+    background-color: #97cbee
+}
+
 .button-fetch:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
