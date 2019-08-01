@@ -1,14 +1,19 @@
 <template>
 <div >
+
+    <div>
+        <img style="width:120px;height:100px;position: relative;float: top;bottom: 53px;" src="static\image\338da840e38ded691a195d834c6d6d5b.png"/>
+    </div>
+
     <div >
         <DatePicker size='large' class="datePicker" v-model="appointParkTime" type="datetime" 
         format="yyyy-MM-dd HH:mm" placeholder="选择预约日期(今天或者明天)和时间"></DatePicker>
     </div>
     <div>
-        <Button class="button-park" @click="appointPark" type="primary" shape="circle" size="large">预约停车</Button>
+        <Button icon="ios-car-outline" class="button-park" @click="appointPark" type="primary" shape="circle" size="large" style="background-color:#696969;font-family: Microsoft Yahei;font-size: 14px;letter-spacing: 0.pt;">确定停车</Button>
     </div>
     <div>
-        <Button class="button" @click="exitLogin" style="border-radius: 15px;">退出登录</Button>
+        <Button size="small" icon="ios-power-outline" shape="circle" class="button" @click="exitLogin" style="border-radius: 40px;"></Button>
     </div>
 
 </div>
