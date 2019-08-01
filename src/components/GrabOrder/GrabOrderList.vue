@@ -1,5 +1,9 @@
 <template>
 <div>
+  <mu-button icon slot="right" @click="refresh()">
+    <mu-icon value="refresh"></mu-icon>
+  </mu-button>
+  <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
   <mu-list @change="selectOrder" textline="three-line">
     <mu-sub-header>订单列表</mu-sub-header>
     <div v-for="(item, index) in orderList" :key="index">
@@ -18,6 +22,7 @@
     </div>
     
   </mu-list>
+  </mu-load-more>
 </div>
 </template>
 
@@ -27,7 +32,8 @@ import { getOrderMessageById } from '../../assets/api/grabOrder'
 export default {
   data () {
     return {
-      
+      refreshing: false,
+      loading: false,
     }
   },
   methods: {

@@ -35,7 +35,9 @@ export default {
             let vm = this
             let time = moment(this.appointParkTime).format('YYYY-MM-DD?HH:mm')
             parkOrder(this, this.$store.getters.getUser.id, time, function (data) {
-                if (data.code == 3) {
+                if (data.code == 2) {
+                    vm.$Message.error('等待停车员接单')
+                } else if (data.code == 3) {
                     vm.$Message.error('暂时匹配不到合适的停车员');
                     // vm.$router.push('/appointMobile');
                     
