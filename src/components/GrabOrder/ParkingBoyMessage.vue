@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { parkingBoyLogin } from '../../assets/api/grabOrder'
+import { parkingBoyLogin, parkingBoyLoginOut } from '../../assets/api/grabOrder'
 export default {
   data () {
     return {
