@@ -55,8 +55,8 @@ export default {
           key: 'phone'
         },
         {
-          title: '状态',
-          key: 'status'
+          title: '未完成订单数',
+          key: 'bookedOrderSum'
         },
         {
           title: '等级',

@@ -121,7 +121,6 @@ export default {
       this.isLogin = 0
     },
     search () {
-      console.log(111)
     }
   },
   mounted () {

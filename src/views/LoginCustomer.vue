@@ -84,6 +84,9 @@ export default {
               }else{
                 vm.$Message.error("登录失败，用户名或密码错误");
               }
+              if(data.status==404 &&data.msg=="NOT_FOUND"){
+                vm.$Message.error("登录失败，用户名或密码错误");
+              }
             },
             function(fail) {
               vm.$Message.error("登录失败，用户名或密码错误");

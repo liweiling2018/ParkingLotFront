@@ -1,5 +1,6 @@
 const axios = require('axios')
 
+
 const parkingBoyLogin  = (vm, parkingBoy,  callback, failback, errback) => {
   let ip = vm.$store.getters.getConfig.server
   axios({
@@ -11,14 +12,14 @@ const parkingBoyLogin  = (vm, parkingBoy,  callback, failback, errback) => {
     }
   })
   .then(function (response) {
-    if (response.status == 200) {
+    if (response.data.status == 200) {
+      document.cookie = "USER_TOKEN=" + response.data.msg
       callback(response.data)
     } else {
       failback(response.data)
     }
   })
   .catch(function (error) {
-
         errback(error)
     })
 }
@@ -87,9 +88,24 @@ const grabOrder  = (vm, parkingBoyId, orderId, callback, errback) => {
     callback(response.data)
   })
   .catch(function (error) {
-
         errback(error)
     })
+}
+
+const parkingBoyLoginOut = (vm, callback, errback) => {
+  let ip = vm.$store.getters.getConfig.server
+  axios({
+    method: 'post',
+    url: ip + '/parkingboy/logout',
+  })
+  .then(function (response) {
+    if (response.data.status == 200) {
+      callback(response.data)      
+    }
+  })
+  .catch(function (error) {
+      errback(error)
+  })
 }
 
 module.exports = {
@@ -97,5 +113,6 @@ module.exports = {
   parkingBoyChangePass,
   getOrdersWithFilter,
   getOrderMessageById,
-  grabOrder
+  grabOrder,
+  parkingBoyLoginOut
 }
