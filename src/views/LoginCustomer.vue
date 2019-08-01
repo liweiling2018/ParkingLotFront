@@ -2,11 +2,11 @@
 
 <div class="layout login_body" style="background:#F2F2F2 no-repeat;opacity: 0.81;">
   <!-- <span style="font-size:50px;font:bold;text-decoration:underline;">滴滴停车系统</span> -->
- <div style="display:inline-block;margin-top:10%;border-radius: 15px;padding: 3%;border-width:2px;border-style:solid;"> 
-   <span style="font-size:30px;font:bold;">滴滴停车</span>
+ <div style="display:inline-block;margin-top:10%;border-radius: 15px;padding: 3%;border-width:1px;border-style:solid;"> 
+   <span style="font-size:30px;font-family:Microsoft Yahei;font:bold;">滴滴停车</span>
    </div>
 <div class="login_div" style="padding-bottom: 40px;
-    border-radius: 15px;padding: 0;border-width:5px;border-style:solid;position: relative;
+    border-radius: 15px;padding: 0;border-width:1px;border-style:solid;position: relative;
     top: 7%;">
     <div class="login_logo" style="margin-left:30%;color:#0B243B">客户登录</div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right">
