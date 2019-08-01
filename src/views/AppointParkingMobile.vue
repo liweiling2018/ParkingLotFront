@@ -4,8 +4,8 @@
         <Header :style="{position: 'relative', width: '100%'}">
             <div class="reserve-logo"><h2>滴滴停车预约系统</h2> </div>
         </Header>
-        <Content :style="{margin: '88px 20px 0',  minHeight: '500px'}">
-            <div class="reserve-container" :style="{position:'relative'}">
+        <Content :style="{ minHeight: '500px'}">
+            <div class="reserve-container" :style="{position:'relative'}" >
                 <AppointPark @parkOrder="parkOrder"  v-if="rightViewEmpty"></AppointPark>            
                 <AppointFetchTable @fetchcar="fetchcar" :data="order" v-if="!rightViewEmpty"></AppointFetchTable>
             </div>

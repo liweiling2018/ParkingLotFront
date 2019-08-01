@@ -1,7 +1,8 @@
 <template>
-<div>
-    <div>
-        <DatePicker size='large' class="datePicker" v-model="appointParkTime" type="datetime" format="yyyy-MM-dd HH:mm" placeholder="选择预约日期(今天或者明天)和时间" style="width: 200px"></DatePicker>
+<div >
+    <div >
+        <DatePicker size='large' class="datePicker" v-model="appointParkTime" type="datetime" 
+        format="yyyy-MM-dd HH:mm" placeholder="选择预约日期(今天或者明天)和时间"></DatePicker>
     </div>
     <div>
         <Button class="button-park" @click="appointPark" type="primary" shape="circle" size="large">预约停车</Button>

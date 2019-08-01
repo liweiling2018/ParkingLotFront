@@ -1,8 +1,10 @@
 <template>
-<div class="appoint-table-container">
-<Row>
+<div style="width:85%">
+<div class="appoint-table-container" style="padding-bottom: 40px;
+    border-radius: 15px;padding: 10%;border-width:1px;border-style:solid;position: relative;">
+<Row >
     <Col span="13"><h2>订单号</h2></Col>
-    <Col span="11">{{data.id}}</Col>
+    <Col span="11" >{{data.id}}</Col>
 </Row>
 <Divider></Divider>
 <Row>
@@ -24,7 +26,8 @@
     <Col span="13"><h2>费用</h2></Col>
     <Col span="11">{{data.cost}}</Col>
 </Row>
-<Button class="button-fetch" @click="appointPark" type="primary" shape="circle" size="large">预约取车</Button>
+</div>
+<Button class="button-fetch" @click="appointPark">预约取车</Button>
 </div>
 </template>
 

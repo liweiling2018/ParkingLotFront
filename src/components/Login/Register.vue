@@ -1,7 +1,7 @@
 <<template>
 <div class = "register_body">
 <div class="register_div" style="padding-bottom: 40px;
-    border-radius: 15px;padding: 0;border-width:5px;border-style:solid;position: relative;
+    border-radius: 15px;padding: 0;border-width:1px;border-style:solid;position: relative;
     top: 8%;">
     <div class="register_logo" style="color:#0B243B">客户注册</div>
     <Form   ref="formInline" :model="formInline" :rules="ruleInline" :label-width="80" label-position="right" >
@@ -40,7 +40,7 @@
                 <p>注册成功，返回登录界面登录</p>
             </Modal>
             <Button type="primary"long @click="handleCancel('formInline')" 
-            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%">
+            style="ackground-color: rgb(red, green, blue);border-color:#0B243B;background-color:#0B243B;margin-bottom:12%;">
               <span style="font-weight:bold;">取消</span></Button>
         </FormItem>
     </Form>
