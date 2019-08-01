@@ -44,3 +44,17 @@
     background-color: rgb(30, 100, 128);
     margin-top: 120px;
 }
+
+.button {
+    float: right;
+    position: relative;
+    bottom: 490px;
+    left: 58px;
+}
+
+.fetch-logout-button {
+    float: right;
+    position: relative;
+    bottom: 544px;
+    left: 9px;
+}
