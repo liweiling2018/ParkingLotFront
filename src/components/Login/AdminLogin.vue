@@ -71,7 +71,7 @@ export default {
             function(fail) {
               vm.$Message.error("登录失败，用户名或密码错误");
             },
-            function(data) {
+            function(err) {
               vm.$Message.error("登录失败，用户名或密码错误");
             }
           );
