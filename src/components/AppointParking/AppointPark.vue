@@ -36,15 +36,25 @@ export default {
             let time = moment(this.appointParkTime).format('YYYY-MM-DD?HH:mm')
             parkOrder(this, this.$store.getters.getUser.id, time, function (data) {
                 if (data.code == 2) {
-                    vm.$Message.error('等待停车员接单')
+                    vm.$Notice.open({
+                        title: "预约成功",
+                        desc: '等待停车员接单'
+                    });
                 } else if (data.code == 3) {
-                    vm.$Message.error('暂时匹配不到合适的停车员');
-                    // vm.$router.push('/appointMobile');
-                    
+                    vm.$Notice.open({
+                        title: "预约成功",
+                        desc: '等待停车员接单'
+                    });
                 } else if (data.code == 4) {
-                    vm.$Message.error('存在未完成订单')
+                    vm.$Notice.open({
+                        title: "预约失败",
+                        desc: '存在未完成订单'
+                    });
                 }else if(data.code == 5){
-                    vm.$Message.error(data.errMessage)
+                    vm.$Notice.open({
+                        title: "预约失败",
+                        desc: data.errMessage
+                    });
                 }else {
                     vm.$emit('parkOrder', data)
                 }
