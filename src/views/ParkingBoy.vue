@@ -1,19 +1,19 @@
 <template>
   <div>
     <AddParkingBoy class="add-parking-boy"></AddParkingBoy>
-    <Table :columns="columns" :data="getParkingBoyList">
+    <Table height="550" :columns="columns" :data="getParkingBoyList">
       <template slot-scope="{ row }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
-        <Button type="error" size="small" @click="freeze(row)">冻结</Button>
+        <Button type="error" size="small" @click="freeze(row)">删除</Button>
+        <Button v-if="row.tag != 'BLACK_CARD'" type="success" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
       </template>
     </Table>
     <Page @on-change='pageChange' class="page-div" :total="100" />
     <Modal v-model="changing" title="修改停车员信息" @on-ok="okChange" @on-cancel="cancelChange">
       <ChangeParkingBoyForm v-show="changing" :formValidate='currentParkingBoy'></ChangeParkingBoyForm>
     </Modal>
-    <Modal v-model="freezing" title="冻结停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
-      是否确认冻结停车员：{{currentParkingBoy.name}}
+    <Modal v-model="freezing" title="删除停车员" @on-ok="okFreeze" @on-cancel="cancelFreeze">
+      是否确认删除停车员：{{currentParkingBoy.name}}
     </Modal>
     <Modal v-model="promoting" title="升级停车员" @on-ok="okPromote" @on-cancel="cancelPromote">
       是否确认升级停车员：{{currentParkingBoy.name}}
@@ -31,19 +31,19 @@ export default {
   data () {
     return {
       columns: [
-        // {
-        //   type: 'expand',
-        //   width: 50,
-        //   render: (h, params) => {
-        //     return h(TableExpand, {
-        //       props: {
-        //         row: params.row
-        //       }
-        //     })
-        //   }
-        // },
         {
-          title: 'Id',
+          type: 'expand',
+          width: 50,
+          render: (h, params) => {
+            return h(TableExpand, {
+              props: {
+                row: params.row
+              }
+            })
+          }
+        },
+        {
+          title: '员工编号',
           key: 'id'
         },
         {
@@ -90,12 +90,8 @@ export default {
       this.currentParkingBoy = row
     },
     promote (row) {
-      if(row.tag == 'BLACK_CARD') {
-        this.$Message.info('已是最高等级!')
-      }else {
-        this.promoting = true
-        this.currentParkingBoy = row
-      }
+      this.promoting = true
+      this.currentParkingBoy = row
     },
     freeze (row) {
       this.freezing = true
@@ -108,7 +104,7 @@ export default {
       let vm = this
       deleteParkingBoy(this, this.currentParkingBoy, function (data) {
         vm.$store.commit('deleteParkingBoy', vm.currentParkingBoy)
-        vm.$Message.info('冻结成功')
+        vm.$Message.info('删除成功')
       }, function (err) {
         console.log(err)
 

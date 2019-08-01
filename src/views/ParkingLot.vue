@@ -3,17 +3,17 @@
     <AddParkingLot class="add-parking-lot" @changeFilter="changeFilter"></AddParkingLot>
     <Table :columns="columns" :data="getParkingLotList">
       <template slot-scope="{ row }" slot="action">
-        <Button type="primary" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
         <Button type="primary" size="small" style="margin-right: 5px" @click="change(row)">修改</Button>
-        <Button type="error" size="small" @click="freeze(row)">冻结</Button>
+        <Button type="error" size="small" @click="freeze(row)">删除</Button>
+        <Button v-if="row.tag != 'BLACK_CARD'" type="success" size="small" style="margin-right: 5px" @click="promote(row)">升级</Button>
       </template>
     </Table>
     <Page @on-change='pageChange' class="page-div" :total="100" />
     <Modal v-model="changing" title="修改停车场信息" @on-ok="okChange" @on-cancel="cancelChange">
       <ChangeParkingLotForm v-if="changing" :formValidate='currentParkingLot'></ChangeParkingLotForm>
     </Modal>
-    <Modal v-model="freezing" title="冻结停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
-      是否确认冻结停车场：{{currentParkingLot.name}}
+    <Modal v-model="freezing" title="删除停车场" @on-ok="okFreeze" @on-cancel="cancelFreeze">
+      是否确认删除停车场：{{currentParkingLot.name}}
     </Modal>
     <Modal v-model="promoting" title="升级停车场" @on-ok="okPromote" @on-cancel="cancelPromote">
       是否确认升级停车场：{{currentParkingLot.name}}
@@ -30,10 +30,6 @@ export default {
   data () {
     return {
       columns: [
-        {
-          title: 'Id',
-          key: 'id'
-        },
         {
           title: '名字',
           key: 'name'
@@ -83,12 +79,8 @@ export default {
         this.currentParkingLot = row
     },
     promote (row) {
-      if(row.tag == 'BLACK_CARD') {
-        this.$Message.info('已是最高等级!')
-      }else {
-        this.promoting = true
-        this.currentParkingLot = row
-      }
+      this.promoting = true
+      this.currentParkingLot = row
     },
     okChange () {
       this.$root.$emit('changeParkingLot')
@@ -97,7 +89,7 @@ export default {
       let vm = this
       deleteParkingLot(this, this.currentParkingLot, function (data) {
         vm.$store.commit('deleteParkingLot', vm.currentParkingLot)
-        vm.$Message.info('冻结成功')
+        vm.$Message.info('删除成功')
       }, function (err) {
 
       })
@@ -105,7 +97,6 @@ export default {
     okPromote () {
       let vm = this
       let updateTag 
-      
       if(vm.currentParkingLot.tag == 'VIP') {
         updateTag = 'BLACK_CARD'
       }

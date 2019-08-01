@@ -27,9 +27,9 @@
         <mu-list-item-title>Tag: {{userMessage.tag}}</mu-list-item-title>
       </mu-list-item>
     </mu-list>
-    <mu-button @click="exit" class="exit-button" fab color="#515a6e">
-      <mu-icon value="delete"></mu-icon>
-    </mu-button>
+    <mu-flex class="exit-button" justify-content="center" align-items="center">
+      <mu-button @click="exit" round color="#515a6e">退出登录</mu-button>
+    </mu-flex>
   </div>
 </template>
 

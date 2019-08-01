@@ -37,21 +37,33 @@ export default {
         return state.parkingBoyList
     },
     getParkingLotList (state) {
-      if (process.env.NODE_ENV === 'development') {
-          return [{
-            id: '0',
-            name: '停车场A',
-            capacity: 10,
-            remine: 5
-          },
-          {
-              id: '1',
-              name: '停车场B',
-              capacity: 8,
-              remine: 2
-            }
-          ]
-        }
+      // if (process.env.NODE_ENV === 'development') {
+      //     return [{
+      //       id: '0',
+      //       name: '停车场A',
+      //       capacity: 10,
+      //       remine: 5
+      //     },
+      //     {
+      //         id: '1',
+      //         name: '停车场B',
+      //         capacity: 8,
+      //         remine: 2
+      //       },
+      //       {
+      //         id: '2',
+      //         name: '停车场C',
+      //         capacity: 8,
+      //         remine: 3
+      //       },
+      //       {
+      //         id: '3',
+      //         name: '停车场D',
+      //         capacity: 8,
+      //         remine: 7
+      //       }
+      //     ]
+      //   }
       return state.parkingLotList
   },
   getUser (state) {

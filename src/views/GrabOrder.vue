@@ -1,36 +1,47 @@
 <template>
-<div>
+<div class='grab-content-container'>
+<Welcome v-if="isLogin == -1"></Welcome>
+<div v-if='isLogin != -1' class='grab-content-container'>
   <mu-appbar class="order-top" style="width: 100%;" color="#515a6e">
     滴滴停车抢单系统
   </mu-appbar>
-  <div data-mu-loading-color="secondary" data-mu-loading-overlay-color="rgba(0, 0, 0, .7)" v-loading="loading2">
-    <div v-if="!showingOrderMessage" class='order-content'>
-      <component @selectOrder='selectOrder' :orderList="orderList" :is="GrabOrderListPages[currentPageId].component"></component>
+    <md-activity-indicator class="loading-div" v-if='loading2'
+      :size="50"
+      :text-size="26"
+      vertical
+    >正在获取数据，请稍后</md-activity-indicator>
+  <div v-if="isLogin == 0"> 
+    <GrabOrderLoginForm @parkingBoyChangePassSuccess='parkingBoyChangePassSuccess' @parkingBoyLoginSuccess="parkingBoyLoginSuccess"></GrabOrderLoginForm>
+  </div>
+  <div v-if='isLogin == 1' class='grab-content-container' >
+    <div v-if="!showingOrderMessage && loading2 == false" class='order-content'>
+      <component @parkingBoyExit="parkingBoyExit" @selectOrder='selectOrder' :filterId='currentPageId' :orderList="orderList" :is="GrabOrderListPages[currentPageId].component"></component>
     </div>
     <div v-if="showingOrderMessage" class="order-content">
       <OrderMessage @grabOrderSuccess="grabOrderSuccess" :orderMessage="orderMessage"></OrderMessage>
     </div>
     <mu-bottom-nav @change="changePage" class="order-bottom">
-      <mu-bottom-nav-item icon="search" title="搜索订单"></mu-bottom-nav-item>
+      <mu-bottom-nav-item  @click="search" icon="search" title="搜索订单"></mu-bottom-nav-item>
       <mu-bottom-nav-item icon="list" title="已接订单"></mu-bottom-nav-item>
       <mu-bottom-nav-item icon="done" title="已完成订单" ></mu-bottom-nav-item>
       <mu-bottom-nav-item icon="face" title="用户" ></mu-bottom-nav-item>
     </mu-bottom-nav>
+     
   </div>
+</div> 
+</div>
   
-  <mu-snackbar :position="normal.position" :open.sync="normal.open">
-      {{normal.message}}
-      <mu-button flat slot="action" color="secondary" @click="normal.open = false">关闭</mu-button>
-    </mu-snackbar>
-</div>   
 
 </template>
 
 <script>
-import GrabOrderForm from '@/components/GrabOrder/GrabOrderForm'
 import GrabOrderList from '@/components/GrabOrder/GrabOrderList'
 import OrderMessage from '@/components/GrabOrder/OrderMessage'
+import GrabOrderLoginForm from '@/components/GrabOrder/GrabOrderLoginForm'
+import ParkingBoyMessage from '@/components/GrabOrder/ParkingBoyMessage'
 import { getOrdersWithFilter, parkingBoyLogin } from '../assets/api/grabOrder'
+import Welcome from '@/components/GrabOrder/Welcome'
+import {ActivityIndicator} from 'mand-mobile'
 export default {
   data () {
     return {
@@ -40,7 +51,7 @@ export default {
         { name: '0', component: GrabOrderList },
         { name: '1', component: GrabOrderList },
         { name: '2', component: GrabOrderList },
-        { name: '3', component: GrabOrderForm },
+        { name: '3', component: ParkingBoyMessage },
       ],
       orderList: [],
       normal: {
@@ -50,13 +61,17 @@ export default {
         timeout: 3000
       },
       orderMessage: {},
-      loading2: false
+      loading2: false,
+      isLogin: -1,
     }
   },
   components: {
-    GrabOrderForm,
     GrabOrderList,
-    OrderMessage
+    OrderMessage,
+    GrabOrderLoginForm,
+    ParkingBoyMessage,
+    Welcome,
+    [ActivityIndicator.name]: ActivityIndicator,
   },
   methods: {
     changePage (page) {
@@ -77,13 +92,6 @@ export default {
         vm.loading2 = false
       })
     },
-    openNormalSnackbar () {
-      if (this.normal.timer) clearTimeout(this.normal.timer);
-      this.normal.open = true;
-      this.normal.timer = setTimeout(() => {
-        this.normal.open = false;
-      }, this.normal.timeout);
-    },
     selectOrder (data) {
       this.orderMessage = data;
       this.showingOrderMessage = true
@@ -98,24 +106,57 @@ export default {
       else {
         this.changePage(0)
       }
+    },
+    parkingBoyLoginSuccess () {
+      this.isLogin = 1
+      this.changePage(0)
+    },
+    parkingBoyChangePassSuccess () {
+      this.isLogin = 1
+      this.changePage(0)
+    },
+    parkingBoyExit () {
+      localStorage.setItem('username', '')
+      localStorage.setItem('password', '')
+      this.isLogin = 0
+    },
+    search () {
     }
   },
   mounted () {
     // console.log(navigator.userAgent.indexOf('Mobile'))
     let vm = this
     let user = {username: localStorage.getItem('username'), password: localStorage.getItem('password')}
-    parkingBoyLogin(vm, user, function (data) {
-      if (data.status == 200 ) {
-        vm.$store.commit('setUser', data.data)
-        localStorage.setItem('username', user.username)
-        localStorage.setItem('password', user.password)
-        vm.changePage(0)
-      } else {
-        vm.openNormalSnackbar()
-      }
-    }, function (fail) {}, function (err) {
-
-    })
+    if(user.password == '123456') {
+      vm.isLogin = 0
+    } else {
+      parkingBoyLogin(vm, user, function (data) {
+        if (data.status == 200 ) {
+          vm.$store.commit('setUser', data.data)
+          localStorage.setItem('username', user.username)
+          localStorage.setItem('password', user.password)
+          setTimeout(()=> {
+            vm.isLogin = 1
+            vm.changePage(0)},
+            2000)
+          
+        }
+        else {
+          setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
+        }
+      }, function (fail) {
+        setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
+      }, function (err) {
+        setTimeout(()=> {
+            vm.isLogin = 0},
+            2000)
+      })
+    }
+    
   }
 }
 </script>
