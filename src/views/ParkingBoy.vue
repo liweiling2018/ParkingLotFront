@@ -71,7 +71,8 @@ export default {
       promoting: false,
       changing: false,
       freezing: false,
-      currentParkingBoy: {}
+      currentParkingBoy: {},
+      pageNum: 1
     }
   },
   computed: {
@@ -133,7 +134,7 @@ export default {
 
     },
     cancelChange () {
-
+      this.pageChange(this.pageNum)
     },
     cancelPromote () {
 

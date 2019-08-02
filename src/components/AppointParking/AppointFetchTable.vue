@@ -7,37 +7,38 @@
     >
       <Row>
         <Col span="13">
-          <h2>订单号</h2>
+          
+          <P><Icon type="md-card"></Icon> 订单号</P>
         </Col>
-        <Col span="11">{{data.id}}</Col>
+        <Col class="order-data" span="11">{{data.id}}</Col>
       </Row>
       <Divider></Divider>
       <Row>
-        <Col span="16">
-          <h2>停车员姓名</h2>
+        <Col span="14">
+          <p><Icon type="md-happy" /> 停车员姓名</p>
         </Col>
-        <Col span="8">{{data.parkingBoyName}}</Col>
-      </Row>
-      <Divider></Divider>
-      <Row>
-        <Col span="13">
-          <h2>停车时间</h2>
-        </Col>
-        <Col span="11">{{data.startTime}}</Col>
+        <Col class="order-data" span="8">{{data.parkingBoyName}}</Col>
       </Row>
       <Divider></Divider>
       <Row>
         <Col span="13">
-          <h2>取车时间</h2>
+          <p><Icon type="ios-alarm-outline" /> 停车时间</p>
         </Col>
-        <Col span="11">{{data.endTime}}</Col>
+        <Col class="order-data" span="11">{{data.startTime}}</Col>
       </Row>
       <Divider></Divider>
       <Row>
         <Col span="13">
-          <h2>费用</h2>
+          <p><Icon type="ios-alarm" /> 取车时间</p>
         </Col>
-        <Col span="11">{{data.cost}}</Col>
+        <Col class="order-data" span="11">{{data.endTime}}</Col>
+      </Row>
+      <Divider></Divider>
+      <Row>
+        <Col span="13">
+          <p><Icon type="logo-yen"></Icon> 费用</p>
+        </Col>
+        <Col class="order-data" span="11">{{data.cost}}</Col>
       </Row>
     </div>
     <Button icon="ios-car-outline" class="button-fetch" @click="appointPark" type="primary" shape="circle" size="large" style="background-color:#696969;font-family: Microsoft Yahei;font-size: 14px;letter-spacing: 0.pt;">预约取车</Button>

@@ -31,6 +31,17 @@
 .appoint-table-container {
     margin: 15px 0 0 0;
     padding: 30px;
+    font-family: Microsoft Yahei;font-size: 13px;letter-spacing: 0.3pt;
+}
+p {
+    color:black;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.order-data {
+    color:#AE0000
+
 }
 
 .button-park {

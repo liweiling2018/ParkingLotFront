@@ -56,7 +56,8 @@ export default {
       freezing: false,
       filter: false,
       promoting: false,
-      currentParkingLot: {}
+      currentParkingLot: {},
+      pageNum: 1
     }
   },
   components: {
@@ -115,12 +116,13 @@ export default {
 
     },
     cancelChange () {
-
+      this.pageChange(this.pageNum)
     },
     cancelPromote () {
 
     },
     pageChange (page) {
+      this.pageNum = page
       let vm = this
       if(this.filter) {
         getValidParkingLotByPage(this, page, function (data) {
