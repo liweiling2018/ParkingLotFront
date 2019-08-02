@@ -10,6 +10,10 @@
       <mu-text-field v-model="orderMessage.userName" disabled></mu-text-field>
     </div>
     <div>
+      车牌号：
+      <mu-text-field v-model="orderMessage.userCarNo" disabled></mu-text-field>
+    </div>
+    <div>
       处理人员：
       <mu-text-field v-model="orderMessage.parkingBoyName" disabled></mu-text-field>
     </div>
@@ -61,6 +65,6 @@ export default {
 <style>
 
 .grab-button {
-  margin-top: 100px;
+  margin-top: 22px;
 }
 </style>
