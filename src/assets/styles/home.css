@@ -63,3 +63,13 @@
     padding: 0px;
     background-color: rgb(18, 155, 247);
 }
+
+.home-logout-button {
+    position: relative;
+    left: 100px;
+    top: 1px;
+    margin: 0px;
+    float: right;
+    margin-top: -41px;
+    margin-right: 39px;
+}

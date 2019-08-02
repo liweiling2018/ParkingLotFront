@@ -71,9 +71,22 @@ export default {
             localStorage.setItem('password', user.password)
             vm.$emit('parkingBoyLoginSuccess')
           } 
+        } else {
+          vm.$Notice.open({
+              title: "登录失败",
+              desc: '用户名或密码错误'
+            });
         }
-      }, function (fail) {}, function (err) {
-
+      }, function (fail) {
+        vm.$Notice.open({
+              title: "登录失败",
+              desc: '用户名或密码错误'
+            });
+      }, function (err) {
+        vm.$Notice.open({
+              title: "登录失败",
+              desc: '用户名或密码错误'
+            });
       })
     },
     parkingBoyChangePassSuccess () {

@@ -3,6 +3,7 @@
         :data="data"
         :target-keys="targetKeys"
         :render-format="Wrender"
+        :titles="titles"
         @on-change="handleChange">
     </Transfer>
 </template>
@@ -13,7 +14,8 @@ export default {
         return {
             data: [],
             targetKeys: [],
-            parkLotData: []
+            parkLotData: [],
+            titles: ['可用停车场', '已用停车场']
         }
     },
     methods: {

@@ -1,8 +1,8 @@
 <template>
 <div class="reserve-container">
     <Layout>
-        <Header :style="{position: 'relative', width: '100%'}">
-            <div class="reserve-logo"><h2>滴滴停车预约系统</h2> </div>
+        <Header :style="{position: 'relative', width: '100%'}" style="background-color:#696969">
+            <div class="reserve-logo"><h3 style="font-family: Microsoft Yahei;font-size: 20px">Welcome to park</h3> </div>
         </Header>
         <Content :style="{ minHeight: '500px'}">
             <div class="reserve-container" :style="{position:'relative'}" >

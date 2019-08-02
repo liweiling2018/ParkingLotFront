@@ -1,4 +1,4 @@
-.button {
+/* .button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -10,9 +10,7 @@
     background-color: #0B243B;
     border: none;
     border-radius: 15px;
-    /* box-shadow: 0 9px #999; */
-    margin-top: 50px;
-}
+    box-shadow: 0 9px #999; 
 
 .button:hover {
     background-color: #97cbee
@@ -20,9 +18,10 @@
 
 .button:active {
     background-color: #3e8e41;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 px #666;
     transform: translateY(4px);
-}
+} 
+*/
 
 
 /* .datePicker {
@@ -32,30 +31,41 @@
 .appoint-table-container {
     margin: 15px 0 0 0;
     padding: 30px;
+    font-family: Microsoft Yahei;font-size: 13px;letter-spacing: 0.3pt;
+}
+p {
+    color:black;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.order-data {
+    color:#AE0000
+
+}
+
+.button-park {
+    margin-top: 50px;
+    color: white;
+    background-color: rgb(30, 100, 128);
 }
 
 .button-fetch {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #0B243B;
-    border: none;
-    border-radius: 15px;
-    /* box-shadow: 0 9px #999; */
-    margin-top: 15%;
+    color: white;
+    background-color: rgb(30, 100, 128);
+    margin-top: 120px;
 }
 
-.button-fetch:hover {
-    background-color: #97cbee
+.button {
+    float: right;
+    position: relative;
+    bottom: 490px;
+    left: 58px;
 }
 
-.button-fetch:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.fetch-logout-button {
+    float: right;
+    position: relative;
+    bottom: 520px;
+    left: 9px;
 }

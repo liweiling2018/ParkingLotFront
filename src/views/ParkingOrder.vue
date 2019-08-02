@@ -22,6 +22,14 @@ export default {
           key: 'userName'
         },
         {
+          title: '客户车牌号',
+          key: 'userCarNo'
+        },
+        {
+          title: '客户电话',
+          key: 'userPhoneNo'
+        },
+        {
           title: '停车员姓名',
           key: 'parkingBoyName'
         },

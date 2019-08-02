@@ -27,7 +27,8 @@ import { getOrderMessageById } from '../../assets/api/grabOrder'
 export default {
   data () {
     return {
-      
+      refreshing: false,
+      loading: false,
     }
   },
   methods: {
@@ -38,6 +39,22 @@ export default {
       }, function (err) {
 
       })
+    },
+    refresh () {
+      this.refreshing = true;
+      this.$refs.container.scrollTop = 0;
+      setTimeout(() => {
+        this.refreshing = false;
+        this.text = this.text === 'List' ? 'Menu' : 'List';
+        this.num = 10;
+      }, 2000)
+    },
+    load () {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.num += 10;
+      }, 2000)
     }
   },
   components: {
