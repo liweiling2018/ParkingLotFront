@@ -5,19 +5,19 @@
     </div>
     <div class="login_div" style="padding-bottom: 40px;
         border-radius: 15px;padding: 0;border-width:5px;border-style:solid;margin-top:3%;">
-        <div class="login_logo" style="margin-left:36%;">管理员登录</div>
+        <div class="login_logo" style="margin-left:28%;">管理员登录</div>
         <Form ref="formInline" :model="formInline" :rules="ruleInline" :label-width="130" label-position="right">
-            <FormItem label="" label-for="username" prop="username" style="margin-left:-20%;margin-right:8%;">
+            <FormItem label="" label-for="username" prop="username" style="margin-left:-38%;margin-right:12%;">
                 <Input type="text" v-model="formInline.username" placeholder="用户名" element-id="username" >
                     <Icon type="md-person" slot="prefix"/>
                 </Input>
             </FormItem>
-            <FormItem label="" label-for="password" prop="password" style="margin-left:-20%;margin-right:8%">
+            <FormItem label="" label-for="password" prop="password" style="margin-left:-38%;margin-right:12%;">
                 <Input type="password" v-model="formInline.password" placeholder="请输入密码" element-id="password">
                     <Icon type="md-lock" slot="prefix"/>
                 </Input>
             </FormItem>
-            <FormItem style="margin-left:-20%;margin-right:8%;opacity: 0.8;background-color: rgb(red, green, blue);">
+            <FormItem style="margin-left:-38%;margin-right:12%;opacity: 0.8;background-color: rgb(red, green, blue);">
                 <Button type="default" ghost long @click="handleSubmit('formInline')" style="background-color:black;">登录</Button>
             </FormItem>
         </Form>
