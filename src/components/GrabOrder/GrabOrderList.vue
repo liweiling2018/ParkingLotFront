@@ -1,9 +1,5 @@
 <template>
 <div>
-  <mu-button icon slot="right" @click="refresh()">
-    <mu-icon value="refresh"></mu-icon>
-  </mu-button>
-  <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
   <mu-list @change="selectOrder" textline="three-line">
     <mu-sub-header>订单列表</mu-sub-header>
     <div v-for="(item, index) in orderList" :key="index">
@@ -22,7 +18,6 @@
     </div>
     
   </mu-list>
-  </mu-load-more>
 </div>
 </template>
 
@@ -44,6 +39,22 @@ export default {
       }, function (err) {
 
       })
+    },
+    refresh () {
+      this.refreshing = true;
+      this.$refs.container.scrollTop = 0;
+      setTimeout(() => {
+        this.refreshing = false;
+        this.text = this.text === 'List' ? 'Menu' : 'List';
+        this.num = 10;
+      }, 2000)
+    },
+    load () {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.num += 10;
+      }, 2000)
     }
   },
   components: {
