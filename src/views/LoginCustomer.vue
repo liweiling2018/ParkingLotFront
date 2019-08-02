@@ -30,7 +30,7 @@
     </Form>
 
     </div>
-    <pre style="margin:35% 8% ;text-align:center;font-family: Microsoft Yahei;font-size: 13px;letter-spacing: 0.3pt;" >
+    <pre style="margin:35% 8% 8% 0 ;text-align:center;font-family: Microsoft Yahei;font-size: 13px;letter-spacing: 0.3pt;" >
     登录注册代表同意用户协议
    隐私政策和中国移动认证服务条款</pre>
 </div>
