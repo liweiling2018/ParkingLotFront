@@ -2,11 +2,14 @@
 <div class='grab-content-container'>
 <Welcome v-if="isLogin == -1"></Welcome>
 <div v-if='isLogin != -1' class='grab-content-container'>
-  <mu-appbar class="order-top" style="width: 100%; padding-left: 35px" color="#515a6e">
+  <mu-appbar v-if="isLogin" class="order-top" style="width: 100%; padding-left: 35px" color="#515a6e">
     滴滴停车抢单系统
     <mu-button icon slot="right" @click="refresh()">
       <mu-icon value="refresh"></mu-icon>
     </mu-button>
+  </mu-appbar>
+   <mu-appbar v-if="isLogin ==false " class="order-top" style="width: 100%;" color="#515a6e">
+    滴滴停车抢单系统
   </mu-appbar>
     <md-activity-indicator class="loading-div" v-if='loading2'
       :size="50"
